@@ -17,6 +17,7 @@
 		93B01FE42B5FAF8A0079412A /* FuncHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE32B5FAF8A0079412A /* FuncHelper.swift */; };
 		93B01FE62B5FB0080079412A /* OBFUError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE52B5FB0080079412A /* OBFUError.swift */; };
 		93B01FE82B5FB2510079412A /* TextMiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE72B5FB2510079412A /* TextMiner.swift */; };
+		93B01FEA2B5FBEBE0079412A /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE92B5FBEBE0079412A /* StringExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,7 @@
 		93B01FE32B5FAF8A0079412A /* FuncHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuncHelper.swift; sourceTree = "<group>"; };
 		93B01FE52B5FB0080079412A /* OBFUError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBFUError.swift; sourceTree = "<group>"; };
 		93B01FE72B5FB2510079412A /* TextMiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMiner.swift; sourceTree = "<group>"; };
+		93B01FE92B5FBEBE0079412A /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				935E8EEA2B5F579300DF40DB /* DateExt.swift */,
+				93B01FE92B5FBEBE0079412A /* StringExt.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93B01FE82B5FB2510079412A /* TextMiner.swift in Sources */,
+				93B01FEA2B5FBEBE0079412A /* StringExt.swift in Sources */,
 				9391AD532B5A682400C92D7B /* main.swift in Sources */,
 				935E8EE82B5F50A700DF40DB /* Documentation.swift in Sources */,
 				935E8EEB2B5F579300DF40DB /* DateExt.swift in Sources */,
