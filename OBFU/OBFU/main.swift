@@ -11,6 +11,7 @@ final class OBFUManager {
     public static var shared: OBFUManager = OBFUManager()
     func run() {
         obfuscator = Obfuscator()
+        obfuscator?.run()
     }
     
     // MARK: - private

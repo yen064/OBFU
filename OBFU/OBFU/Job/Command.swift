@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum COMMAND {
+enum Command {
     
-    static var isAnyCOMMAND: Bool {
+    static var isAnyCommandLineArg: Bool {
         return CommandLine.arguments.count > 1
     }
     
@@ -19,6 +19,7 @@ enum COMMAND {
     case prefixMark
     case suffixMark
     case printSelf
+    case mode
     case unknown
     
     var VALUE: String? {
@@ -54,9 +55,13 @@ enum COMMAND {
             return (longkey: "suffixMark", shortkey: "sm")
         case .printSelf:
             return (longkey: "printSelf", shortkey: "ps")
+        case .mode:
+            return (longkey: "mode", shortkey: "m")
         default:
             return (longkey: "unknown", shortkey: "unknown")
         }
     }
     
 }
+
+typealias Cmd = Command
