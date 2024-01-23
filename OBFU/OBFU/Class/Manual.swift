@@ -9,8 +9,11 @@ import Foundation
 
 final class Manual: NSObject {
     override var description: String {
-        var strArray: [String] = [super.description]
-        strArray.append("some shit")
+        var strArray: [String] = ["OBFU"]
+        strArray.append("\n")
+        strArray.append(String(format: "workPath: -%@ -%@",
+                               COMMAND.workPath.commandKey.longkey,
+                               COMMAND.workPath.commandKey.shortkey))
         return strArray.joined()
     }
 }

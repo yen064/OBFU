@@ -114,6 +114,7 @@
 				9391AD4B2B5A682400C92D7B /* Sources */,
 				9391AD4C2B5A682400C92D7B /* Frameworks */,
 				9391AD4D2B5A682400C92D7B /* CopyFiles */,
+				93B01FDE2B5FA04D0079412A /* Run Script (編譯後自動複製一份到執行目錄 /usr/local/bin) */,
 			);
 			buildRules = (
 			);
@@ -156,6 +157,28 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		93B01FDE2B5FA04D0079412A /* Run Script (編譯後自動複製一份到執行目錄 /usr/local/bin) */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script (編譯後自動複製一份到執行目錄 /usr/local/bin)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd $TARGET_BUILD_DIR\necho $TARGET_BUILD_DIR\ncp -v ./$TARGET_BUILD_DIRA/OBFU /usr/local/bin/OBFU\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9391AD4B2B5A682400C92D7B /* Sources */ = {

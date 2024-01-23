@@ -54,11 +54,15 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-h &quot;hihihihi&quot;"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-k 2.30.1"
-            isEnabled = "NO">
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-ps"
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-p ./"

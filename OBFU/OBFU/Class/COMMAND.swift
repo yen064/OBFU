@@ -40,7 +40,7 @@ enum COMMAND {
         return false
     }
     
-    private var commandKey: (longkey: String, shortkey: String) {
+    var commandKey: (longkey: String, shortkey: String) {
         switch self {
         case .help:
             return (longkey: "help", shortkey: "h")

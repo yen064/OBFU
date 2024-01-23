@@ -26,18 +26,19 @@ final class Obfuscator: NSObject {
     override init() {
         super.init()
         printSelf()
-        printHelpAutomatically()
+        printManualAutomatically()
     }
 }
 
 extension Obfuscator {
-    private func printHelpAutomatically() {
+    private func printManualAutomatically() {
         if COMMAND.isAnyCOMMAND {
             return
         }
         // TODO:
         //  印些什麼
-        log.write(Manual())
+        let manual = Manual()
+        log.write(manual)
     }
     private func printSelf() {
         if !COMMAND.printSelf.USE {
