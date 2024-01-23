@@ -12,7 +12,7 @@ func exit(error: Error? = nil) -> Never {
     sleep(1)
     if let err = error as? NSError {
         let code = Int32(err.code)
-        LogHelper.log(String(format: "Error(%zd) occurred!", code))
+        log.write(String(format: "Error(%zd) occurred!", code))
         exit(code)
     } else {
         exit(0)

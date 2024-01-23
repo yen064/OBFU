@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		935E8EDE2B5E591E00DF40DB /* ExitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E8EDD2B5E591E00DF40DB /* ExitHelper.swift */; };
-		935E8EE22B5E656500DF40DB /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E8EE12B5E656500DF40DB /* LogHelper.swift */; };
+		935E8EE22B5E656500DF40DB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E8EE12B5E656500DF40DB /* Logger.swift */; };
 		935E8EE42B5E693000DF40DB /* Obfuscator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E8EE32B5E693000DF40DB /* Obfuscator.swift */; };
 		935E8EE62B5E69AF00DF40DB /* COMMAND.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E8EE52B5E69AF00DF40DB /* COMMAND.swift */; };
+		935E8EE82B5F50A700DF40DB /* Manual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E8EE72B5F50A700DF40DB /* Manual.swift */; };
+		935E8EEB2B5F579300DF40DB /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E8EEA2B5F579300DF40DB /* DateExt.swift */; };
 		9391AD532B5A682400C92D7B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391AD522B5A682400C92D7B /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,9 +30,11 @@
 
 /* Begin PBXFileReference section */
 		935E8EDD2B5E591E00DF40DB /* ExitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitHelper.swift; sourceTree = "<group>"; };
-		935E8EE12B5E656500DF40DB /* LogHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
+		935E8EE12B5E656500DF40DB /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		935E8EE32B5E693000DF40DB /* Obfuscator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obfuscator.swift; sourceTree = "<group>"; };
 		935E8EE52B5E69AF00DF40DB /* COMMAND.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = COMMAND.swift; sourceTree = "<group>"; };
+		935E8EE72B5F50A700DF40DB /* Manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manual.swift; sourceTree = "<group>"; };
+		935E8EEA2B5F579300DF40DB /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		9391AD4F2B5A682400C92D7B /* OBFU */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OBFU; sourceTree = BUILT_PRODUCTS_DIR; };
 		9391AD522B5A682400C92D7B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,7 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				935E8EDD2B5E591E00DF40DB /* ExitHelper.swift */,
-				935E8EE12B5E656500DF40DB /* LogHelper.swift */,
+				935E8EE12B5E656500DF40DB /* Logger.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -59,9 +63,18 @@
 			isa = PBXGroup;
 			children = (
 				935E8EE52B5E69AF00DF40DB /* COMMAND.swift */,
+				935E8EE72B5F50A700DF40DB /* Manual.swift */,
 				935E8EE32B5E693000DF40DB /* Obfuscator.swift */,
 			);
 			path = Class;
+			sourceTree = "<group>";
+		};
+		935E8EE92B5F578600DF40DB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				935E8EEA2B5F579300DF40DB /* DateExt.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		9391AD462B5A682400C92D7B = {
@@ -84,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				935E8EE02B5E5C0600DF40DB /* Class */,
+				935E8EE92B5F578600DF40DB /* Extension */,
 				935E8EDF2B5E5B8800DF40DB /* Helper */,
 				9391AD522B5A682400C92D7B /* main.swift */,
 			);
@@ -149,7 +163,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9391AD532B5A682400C92D7B /* main.swift in Sources */,
-				935E8EE22B5E656500DF40DB /* LogHelper.swift in Sources */,
+				935E8EE82B5F50A700DF40DB /* Manual.swift in Sources */,
+				935E8EEB2B5F579300DF40DB /* DateExt.swift in Sources */,
+				935E8EE22B5E656500DF40DB /* Logger.swift in Sources */,
 				935E8EDE2B5E591E00DF40DB /* ExitHelper.swift in Sources */,
 				935E8EE62B5E69AF00DF40DB /* COMMAND.swift in Sources */,
 				935E8EE42B5E693000DF40DB /* Obfuscator.swift in Sources */,

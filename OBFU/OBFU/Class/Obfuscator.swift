@@ -12,7 +12,6 @@ final class Obfuscator: NSObject {
     var encryptKey: String = COMMAND.encryptKey.VALUE ?? defaultEncryptKey()
     var prefixMark: String = COMMAND.prefixMark.VALUE ?? defaultPrefixMark()
     var suffixMark: String = COMMAND.suffixMark.VALUE ?? defaultSuffixMark()
-
     override var description: String {
         var strArray: [String] = [super.description]
         strArray.append(String(format: "> workPath: %@", workPath))
@@ -24,27 +23,31 @@ final class Obfuscator: NSObject {
         strArray.append("")
         return strArray.joined(separator: "\n")
     }
-    
     override init() {
         super.init()
         printSelf()
         printHelpAutomatically()
     }
+}
+
+extension Obfuscator {
     private func printHelpAutomatically() {
         if COMMAND.isAnyCOMMAND {
             return
         }
         // TODO:
         //  印些什麼
+        log.write(Manual())
     }
     private func printSelf() {
         if !COMMAND.printSelf.USE {
             return
         }
-        LogHelper.log(description)
+        log.write(description)
     }
 }
 
+// MARK: - default (static)
 extension Obfuscator {
     static func defaultEncryptKey() -> String {
         return "1.0.0"
