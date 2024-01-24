@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,12 +12,13 @@
 		935E8EE42B5E693000DF40DB /* Obfuscator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E8EE32B5E693000DF40DB /* Obfuscator.swift */; };
 		935E8EE62B5E69AF00DF40DB /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E8EE52B5E69AF00DF40DB /* Command.swift */; };
 		935E8EE82B5F50A700DF40DB /* Documentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E8EE72B5F50A700DF40DB /* Documentation.swift */; };
-		935E8EEB2B5F579300DF40DB /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E8EEA2B5F579300DF40DB /* DateExt.swift */; };
 		9391AD532B5A682400C92D7B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391AD522B5A682400C92D7B /* main.swift */; };
+		9398B9CA2B60EF5F00631464 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9398B9C92B60EF5F00631464 /* DateHelper.swift */; };
+		9398B9CC2B60F1E200631464 /* OBFUManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9398B9CB2B60F1E200631464 /* OBFUManager.swift */; };
 		93B01FE42B5FAF8A0079412A /* FuncHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE32B5FAF8A0079412A /* FuncHelper.swift */; };
 		93B01FE62B5FB0080079412A /* OBFUError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE52B5FB0080079412A /* OBFUError.swift */; };
 		93B01FE82B5FB2510079412A /* TextMiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE72B5FB2510079412A /* TextMiner.swift */; };
-		93B01FEA2B5FBEBE0079412A /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE92B5FBEBE0079412A /* StringExt.swift */; };
+		93B01FEA2B5FBEBE0079412A /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE92B5FBEBE0079412A /* StringHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,13 +39,14 @@
 		935E8EE32B5E693000DF40DB /* Obfuscator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obfuscator.swift; sourceTree = "<group>"; };
 		935E8EE52B5E69AF00DF40DB /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		935E8EE72B5F50A700DF40DB /* Documentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Documentation.swift; sourceTree = "<group>"; };
-		935E8EEA2B5F579300DF40DB /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		9391AD4F2B5A682400C92D7B /* OBFU */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OBFU; sourceTree = BUILT_PRODUCTS_DIR; };
 		9391AD522B5A682400C92D7B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		9398B9C92B60EF5F00631464 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		9398B9CB2B60F1E200631464 /* OBFUManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBFUManager.swift; sourceTree = "<group>"; };
 		93B01FE32B5FAF8A0079412A /* FuncHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuncHelper.swift; sourceTree = "<group>"; };
 		93B01FE52B5FB0080079412A /* OBFUError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBFUError.swift; sourceTree = "<group>"; };
 		93B01FE72B5FB2510079412A /* TextMiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMiner.swift; sourceTree = "<group>"; };
-		93B01FE92B5FBEBE0079412A /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
+		93B01FE92B5FBEBE0079412A /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +63,10 @@
 		935E8EDF2B5E5B8800DF40DB /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				9398B9C92B60EF5F00631464 /* DateHelper.swift */,
 				935E8EDD2B5E591E00DF40DB /* ExitHelper.swift */,
 				93B01FE32B5FAF8A0079412A /* FuncHelper.swift */,
-				935E8EE12B5E656500DF40DB /* Logger.swift */,
+				93B01FE92B5FBEBE0079412A /* StringHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -74,18 +77,10 @@
 				93B01FE72B5FB2510079412A /* TextMiner.swift */,
 				935E8EE52B5E69AF00DF40DB /* Command.swift */,
 				935E8EE72B5F50A700DF40DB /* Documentation.swift */,
+				935E8EE12B5E656500DF40DB /* Logger.swift */,
 				935E8EE32B5E693000DF40DB /* Obfuscator.swift */,
 			);
 			path = Job;
-			sourceTree = "<group>";
-		};
-		935E8EE92B5F578600DF40DB /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				935E8EEA2B5F579300DF40DB /* DateExt.swift */,
-				93B01FE92B5FBEBE0079412A /* StringExt.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		9391AD462B5A682400C92D7B = {
@@ -108,11 +103,11 @@
 			isa = PBXGroup;
 			children = (
 				935E8EE02B5E5C0600DF40DB /* Job */,
-				935E8EE92B5F578600DF40DB /* Extension */,
 				935E8EDF2B5E5B8800DF40DB /* Helper */,
 				93B01FE22B5FAC440079412A /* Model */,
 				9391AD522B5A682400C92D7B /* main.swift */,
 				93B01FE52B5FB0080079412A /* OBFUError.swift */,
+				9398B9CB2B60F1E200631464 /* OBFUManager.swift */,
 			);
 			path = OBFU;
 			sourceTree = "<group>";
@@ -160,7 +155,7 @@
 				};
 			};
 			buildConfigurationList = 9391AD4A2B5A682400C92D7B /* Build configuration list for PBXProject "OBFU" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -183,16 +178,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				93B01FE82B5FB2510079412A /* TextMiner.swift in Sources */,
-				93B01FEA2B5FBEBE0079412A /* StringExt.swift in Sources */,
+				93B01FEA2B5FBEBE0079412A /* StringHelper.swift in Sources */,
 				9391AD532B5A682400C92D7B /* main.swift in Sources */,
 				935E8EE82B5F50A700DF40DB /* Documentation.swift in Sources */,
-				935E8EEB2B5F579300DF40DB /* DateExt.swift in Sources */,
 				935E8EE22B5E656500DF40DB /* Logger.swift in Sources */,
 				935E8EDE2B5E591E00DF40DB /* ExitHelper.swift in Sources */,
 				935E8EE62B5E69AF00DF40DB /* Command.swift in Sources */,
 				935E8EE42B5E693000DF40DB /* Obfuscator.swift in Sources */,
+				9398B9CA2B60EF5F00631464 /* DateHelper.swift in Sources */,
 				93B01FE62B5FB0080079412A /* OBFUError.swift in Sources */,
 				93B01FE42B5FAF8A0079412A /* FuncHelper.swift in Sources */,
+				9398B9CC2B60F1E200631464 /* OBFUManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

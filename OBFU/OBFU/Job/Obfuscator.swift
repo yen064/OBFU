@@ -34,8 +34,8 @@ final class Obfuscator: NSObject {
     }
     override init() {
         super.init()
-        printSelf()
         printDocumentationAutomatically()
+        printSelf()
     }
     deinit {
         
@@ -45,10 +45,14 @@ final class Obfuscator: NSObject {
 // MARK: -
 extension Obfuscator {
     func run() {
+        
         if mode == .reflect {
             
         }
         if mode == .file {
+            
+            let a = "abcdefg"
+            let b = a.randomElement(using: &<#T##RandomNumberGenerator#>)  // .random(length: <#T##Int#>, excluding: <#T##Set<String>#>)
             
         }
     }
@@ -57,13 +61,12 @@ extension Obfuscator {
 // MARK: - private
 extension Obfuscator {
     private func printDocumentationAutomatically() {
-        if Cmd.isAnyCommandLineArg {
+        if Cmd.isAnyCommandLineArg && !Cmd.help.USE {
             return
         }
         // TODO:
         //  印些什麼
-        let documentation = Documentation()
-        log.write(documentation)
+        Documentation.dump()
     }
     private func printSelf() {
         if !Cmd.printSelf.USE {
@@ -88,8 +91,8 @@ extension Obfuscator {
         return "__FU"
     }
     static func defaultMode() -> ObfuscateMode {
-        return ObfuscateMode(rawValue: "reflect") ?? .reflect
-//        return "file"
+//        return .reflect
+        return .file
     }
     static func getObfuscateMode() -> ObfuscateMode {
         guard

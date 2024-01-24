@@ -7,6 +7,7 @@
 
 import Foundation
 
-final class FuncHelper {
+struct FuncHelper {
     
 }
+typealias FUNC = FuncHelper

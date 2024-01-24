@@ -72,10 +72,6 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-h &quot;hihihihi&quot;"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
             argument = "-k 2.30.1"
             isEnabled = "YES">
          </CommandLineArgument>
@@ -85,6 +81,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-p ./"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-h"
             isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
