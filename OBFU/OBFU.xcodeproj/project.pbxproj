@@ -20,6 +20,7 @@
 		93B01FE82B5FB2510079412A /* TextMiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE72B5FB2510079412A /* TextMiner.swift */; };
 		93B01FEA2B5FBEBE0079412A /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE92B5FBEBE0079412A /* StringHelper.swift */; };
 		9D95C67E44C99064933D327B /* Pods_OBFU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFD4594C7700E1D1046205C /* Pods_OBFU.framework */; };
+		CA724F152B8C925600257367 /* CryptoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA724F142B8C925600257367 /* CryptoHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,6 +51,7 @@
 		93B01FE72B5FB2510079412A /* TextMiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMiner.swift; sourceTree = "<group>"; };
 		93B01FE92B5FBEBE0079412A /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		ADFD4594C7700E1D1046205C /* Pods_OBFU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OBFU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA724F142B8C925600257367 /* CryptoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoHelper.swift; sourceTree = "<group>"; };
 		D4815125D4FCC21E5F738850 /* Pods-OBFU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBFU.debug.xcconfig"; path = "Target Support Files/Pods-OBFU/Pods-OBFU.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 		935E8EDF2B5E5B8800DF40DB /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				CA724F142B8C925600257367 /* CryptoHelper.swift */,
 				9398B9C92B60EF5F00631464 /* DateHelper.swift */,
 				935E8EDD2B5E591E00DF40DB /* ExitHelper.swift */,
 				93B01FE32B5FAF8A0079412A /* FuncHelper.swift */,
@@ -140,7 +143,6 @@
 				D4815125D4FCC21E5F738850 /* Pods-OBFU.debug.xcconfig */,
 				2692C11B03FDEDEE24FD0056 /* Pods-OBFU.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -236,6 +238,7 @@
 				935E8EDE2B5E591E00DF40DB /* ExitHelper.swift in Sources */,
 				935E8EE62B5E69AF00DF40DB /* Command.swift in Sources */,
 				935E8EE42B5E693000DF40DB /* Obfuscator.swift in Sources */,
+				CA724F152B8C925600257367 /* CryptoHelper.swift in Sources */,
 				9398B9CA2B60EF5F00631464 /* DateHelper.swift in Sources */,
 				93B01FE62B5FB0080079412A /* OBFUError.swift in Sources */,
 				93B01FE42B5FAF8A0079412A /* FuncHelper.swift in Sources */,
