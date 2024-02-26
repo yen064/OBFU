@@ -6,5 +6,6 @@ target 'OBFU' do
   use_frameworks!
 
   # Pods for OBFU
+  pod 'CryptoSwift', '5.0'
 
 end

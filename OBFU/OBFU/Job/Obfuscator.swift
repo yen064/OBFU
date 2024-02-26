@@ -52,7 +52,7 @@ extension Obfuscator {
         if mode == .file {
             
             let a = "abcdefg"
-            let b = a.randomElement(using: &<#T##RandomNumberGenerator#>)  // .random(length: <#T##Int#>, excluding: <#T##Set<String>#>)
+//            let b = a.randomElement(using: &<#T##RandomNumberGenerator#>)  // .random(length: <#T##Int#>, excluding: <#T##Set<String>#>)
             
         }
     }

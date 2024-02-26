@@ -19,6 +19,7 @@
 		93B01FE62B5FB0080079412A /* OBFUError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE52B5FB0080079412A /* OBFUError.swift */; };
 		93B01FE82B5FB2510079412A /* TextMiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE72B5FB2510079412A /* TextMiner.swift */; };
 		93B01FEA2B5FBEBE0079412A /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE92B5FBEBE0079412A /* StringHelper.swift */; };
+		9D95C67E44C99064933D327B /* Pods_OBFU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFD4594C7700E1D1046205C /* Pods_OBFU.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2692C11B03FDEDEE24FD0056 /* Pods-OBFU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBFU.release.xcconfig"; path = "Target Support Files/Pods-OBFU/Pods-OBFU.release.xcconfig"; sourceTree = "<group>"; };
 		935E8EDD2B5E591E00DF40DB /* ExitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitHelper.swift; sourceTree = "<group>"; };
 		935E8EE12B5E656500DF40DB /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		935E8EE32B5E693000DF40DB /* Obfuscator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obfuscator.swift; sourceTree = "<group>"; };
@@ -47,6 +49,8 @@
 		93B01FE52B5FB0080079412A /* OBFUError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBFUError.swift; sourceTree = "<group>"; };
 		93B01FE72B5FB2510079412A /* TextMiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMiner.swift; sourceTree = "<group>"; };
 		93B01FE92B5FBEBE0079412A /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
+		ADFD4594C7700E1D1046205C /* Pods_OBFU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OBFU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4815125D4FCC21E5F738850 /* Pods-OBFU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBFU.debug.xcconfig"; path = "Target Support Files/Pods-OBFU/Pods-OBFU.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +58,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D95C67E44C99064933D327B /* Pods_OBFU.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6FB393E173A9800448BF7DA0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADFD4594C7700E1D1046205C /* Pods_OBFU.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		935E8EDF2B5E5B8800DF40DB /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +101,8 @@
 			children = (
 				9391AD512B5A682400C92D7B /* OBFU */,
 				9391AD502B5A682400C92D7B /* Products */,
+				BE41B3F030A1A8151E0CD4C4 /* Pods */,
+				6FB393E173A9800448BF7DA0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +134,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BE41B3F030A1A8151E0CD4C4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4815125D4FCC21E5F738850 /* Pods-OBFU.debug.xcconfig */,
+				2692C11B03FDEDEE24FD0056 /* Pods-OBFU.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,6 +151,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9391AD562B5A682400C92D7B /* Build configuration list for PBXNativeTarget "OBFU" */;
 			buildPhases = (
+				DF4B46D58F92B4C3CA910DF8 /* [CP] Check Pods Manifest.lock */,
 				9391AD4B2B5A682400C92D7B /* Sources */,
 				9391AD4C2B5A682400C92D7B /* Frameworks */,
 				9391AD4D2B5A682400C92D7B /* CopyFiles */,
@@ -171,6 +197,31 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DF4B46D58F92B4C3CA910DF8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OBFU-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9391AD4B2B5A682400C92D7B /* Sources */ = {
@@ -310,6 +361,7 @@
 		};
 		9391AD572B5A682400C92D7B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4815125D4FCC21E5F738850 /* Pods-OBFU.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -319,6 +371,7 @@
 		};
 		9391AD582B5A682400C92D7B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2692C11B03FDEDEE24FD0056 /* Pods-OBFU.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
