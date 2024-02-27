@@ -19,24 +19,35 @@
 		93B01FE62B5FB0080079412A /* OBFUError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE52B5FB0080079412A /* OBFUError.swift */; };
 		93B01FE82B5FB2510079412A /* TextMiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE72B5FB2510079412A /* TextMiner.swift */; };
 		93B01FEA2B5FBEBE0079412A /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B01FE92B5FBEBE0079412A /* StringHelper.swift */; };
-		9D95C67E44C99064933D327B /* Pods_OBFU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFD4594C7700E1D1046205C /* Pods_OBFU.framework */; };
+		CA0450632B8DC8E000371369 /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA724F152B8C925600257367 /* CryptoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA724F142B8C925600257367 /* CryptoHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9391AD4D2B5A682400C92D7B /* CopyFiles */ = {
+		9391AD4D2B5A682400C92D7B /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			dstPath = /usr/share/man/man1;
 			dstSubfolderSpec = 0;
 			files = (
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 1;
+		};
+		CA0450642B8DC8E000371369 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CA0450632B8DC8E000371369 /* BuildFile in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2692C11B03FDEDEE24FD0056 /* Pods-OBFU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBFU.release.xcconfig"; path = "Target Support Files/Pods-OBFU/Pods-OBFU.release.xcconfig"; sourceTree = "<group>"; };
 		935E8EDD2B5E591E00DF40DB /* ExitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitHelper.swift; sourceTree = "<group>"; };
 		935E8EE12B5E656500DF40DB /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		935E8EE32B5E693000DF40DB /* Obfuscator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obfuscator.swift; sourceTree = "<group>"; };
@@ -50,9 +61,8 @@
 		93B01FE52B5FB0080079412A /* OBFUError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBFUError.swift; sourceTree = "<group>"; };
 		93B01FE72B5FB2510079412A /* TextMiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMiner.swift; sourceTree = "<group>"; };
 		93B01FE92B5FBEBE0079412A /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
-		ADFD4594C7700E1D1046205C /* Pods_OBFU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OBFU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0450672B8DD37000371369 /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA724F142B8C925600257367 /* CryptoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoHelper.swift; sourceTree = "<group>"; };
-		D4815125D4FCC21E5F738850 /* Pods-OBFU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBFU.debug.xcconfig"; path = "Target Support Files/Pods-OBFU/Pods-OBFU.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +70,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D95C67E44C99064933D327B /* Pods_OBFU.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6FB393E173A9800448BF7DA0 /* Frameworks */ = {
+		0ED1710CC2807E9358C51CD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ADFD4594C7700E1D1046205C /* Pods_OBFU.framework */,
+				CA0450672B8DD37000371369 /* CryptoSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -105,7 +114,7 @@
 				9391AD512B5A682400C92D7B /* OBFU */,
 				9391AD502B5A682400C92D7B /* Products */,
 				BE41B3F030A1A8151E0CD4C4 /* Pods */,
-				6FB393E173A9800448BF7DA0 /* Frameworks */,
+				0ED1710CC2807E9358C51CD7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,8 +149,6 @@
 		BE41B3F030A1A8151E0CD4C4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D4815125D4FCC21E5F738850 /* Pods-OBFU.debug.xcconfig */,
-				2692C11B03FDEDEE24FD0056 /* Pods-OBFU.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -153,10 +160,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9391AD562B5A682400C92D7B /* Build configuration list for PBXNativeTarget "OBFU" */;
 			buildPhases = (
-				DF4B46D58F92B4C3CA910DF8 /* [CP] Check Pods Manifest.lock */,
 				9391AD4B2B5A682400C92D7B /* Sources */,
 				9391AD4C2B5A682400C92D7B /* Frameworks */,
-				9391AD4D2B5A682400C92D7B /* CopyFiles */,
+				9391AD4D2B5A682400C92D7B /* Copy Files */,
+				CA0450642B8DC8E000371369 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,31 +206,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		DF4B46D58F92B4C3CA910DF8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-OBFU-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9391AD4B2B5A682400C92D7B /* Sources */ = {
@@ -364,9 +346,16 @@
 		};
 		9391AD572B5A682400C92D7B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4815125D4FCC21E5F738850 /* Pods-OBFU.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/lib/swift,
+					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+					"\"${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -374,9 +363,16 @@
 		};
 		9391AD582B5A682400C92D7B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2692C11B03FDEDEE24FD0056 /* Pods-OBFU.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/lib/swift,
+					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+					"\"${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
