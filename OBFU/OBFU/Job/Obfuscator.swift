@@ -46,6 +46,8 @@ final class Obfuscator: NSObject {
 extension Obfuscator {
     func run() {
         
+        CryptoHelper.test()
+        
         if mode == .reflect {
             
         }
