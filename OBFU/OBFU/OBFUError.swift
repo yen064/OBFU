@@ -7,8 +7,9 @@
 
 import Foundation
 
-enum OBFUError {
+enum OBFUError: Error {
 case workPathNotExist
+case convertIssue
 }
 
 extension OBFUError: CustomStringConvertible {

@@ -10,7 +10,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;cd $TARGET_BUILD_DIR&#10;echo $TARGET_BUILD_DIR&#10;cp -v ./$TARGET_BUILD_DIRA/OBFU /usr/local/bin/OBFU&#10;"
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;&#10;# cd $TARGET_BUILD_DIR&#10;# echo $TARGET_BUILD_DIR&#10;# cp -v ./$TARGET_BUILD_DIRA/OBFU /usr/local/bin/OBFU&#10;"
                shellToInvoke = "/bin/sh">
                <EnvironmentBuildable>
                   <BuildableReference
