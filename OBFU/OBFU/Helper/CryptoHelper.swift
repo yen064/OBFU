@@ -8,23 +8,30 @@ import CryptoSwift
 
 class CryptoHelper {
     static func test() -> Void {
-        cryptoTest(keyGen: KeyGenerator())
-        cryptoTest(keyGen: KeyGenerator(seed: "2.36.1"))
+        cryptoTest()
+        cryptoTest(seed: "2.36.1")
+        cryptoTest(seed: "2.37.0")
     }
     
-    fileprivate static func cryptoTest(keyGen: KeyGenerator) -> Void {
+    fileprivate static func cryptoTest(seed: String? = nil) -> Void {
+        
+        var helper: CryptoHelper = CryptoHelper()
+        if let seedStr = seed {
+            helper = CryptoHelper(KeyGenerator(seed: seedStr))
+        }
+        
         let rawStr = "loginInfoModel"
-        let encryptedStr: String? = CryptoHelper(keyGen).encrypt(rawStr)
+        let encryptedStr: String? = helper.encrypt(rawStr)
         var decryptedStr: String?
         
         if let encryptedString = encryptedStr {
-            decryptedStr = CryptoHelper(keyGen).decrypt(encryptedString)
+            decryptedStr = helper.decrypt(encryptedString)
         }
         
         print("")
         print("加密測試:")
-        print("aesKey => \(keyGen.aesKeyStr)")
-        print("aesIv => \(keyGen.aesIvStr)")
+        print("aesKey => \(helper.keyGenerator.aesKeyStr)")
+        print("aesIv => \(helper.keyGenerator.aesIvStr)")
         
         print("rawStr = \(rawStr)")
         print("encryptedStr = \(encryptedStr ?? "")")
@@ -35,7 +42,7 @@ class CryptoHelper {
     fileprivate static var defaultSeed: String {
         return "1.0.0"
     }
-    fileprivate var keyGenerator: KeyGenerator = KeyGenerator(seed: CryptoHelper.defaultSeed)
+    public private(set) var keyGenerator: KeyGenerator = KeyGenerator(seed: CryptoHelper.defaultSeed)
     
     init(_ keyGenerator: KeyGenerator? = nil) {
         if let keyGen = keyGenerator {
@@ -68,8 +75,8 @@ class CryptoHelper {
     fileprivate func decrypt(source: String) throws -> String {
         do {
             let aes = try AES(key: keyGenerator.aesKeyStr, iv: keyGenerator.aesIvStr)
-            let decryptedStr = try source.decryptBase64ToString(cipher: aes)
-            return decryptedStr
+            let decryptStr = try source.decryptBase64ToString(cipher: aes)
+            return decryptStr
         } catch let error {
             throw error
         }
@@ -100,9 +107,7 @@ struct KeyGenerator {
         let ivStr = newCharArr.joined()
         return ivStr
     }
-    init(seed: String? = nil) {
-        if let seedStr = seed {
-            self.sourceSeed = seedStr
-        }
+    init(seed: String) {
+        self.sourceSeed = seed
     }
 }
