@@ -8,53 +8,13 @@ import CryptoSwift
 
 class CryptoHelper {
     
-    enum CryptoEncryptStringDisplayType {
-        case base64
-        case hex
-    }
-    
-    static func test() -> Void {
-        cryptoTest()
-        cryptoTest(seed: "2.36.1")
-        cryptoTest(seed: "2.37.0")
-    }
-    
-    fileprivate static func cryptoTest(seed: String? = nil) -> Void {
-        
-        let encryptStrType: CryptoEncryptStringDisplayType = .hex
-        var helper: CryptoHelper = CryptoHelper(type: encryptStrType)
-        
-        if let seedStr = seed {
-            let keyGen = KeyGenerator(seed: seedStr)
-            helper = CryptoHelper(key: keyGen, type: encryptStrType)
-        }
-        
-        let rawStr = "loginInfoModel"
-        let encryptedStr: String? = helper.encrypt(rawStr)
-        var decryptedStr: String?
-        
-        if let encryptedString = encryptedStr {
-            decryptedStr = helper.decrypt(encryptedString)
-        }
-        
-        print("")
-        print("加密測試:")
-        print("aesKey => \(helper.keyGenerator.aesKeyStr)")
-        print("aesIv => \(helper.keyGenerator.aesIvStr)")
-        
-        print("rawStr = \(rawStr)")
-        print("encryptedStr = \(encryptedStr ?? "")")
-        print("decryptedStr = \(decryptedStr ?? "")")
-        print("")
-    }
-    
     fileprivate static var defaultSeed: String {
         return "1.0.0"
     }
-    public private(set) var keyGenerator: KeyGenerator = KeyGenerator(seed: CryptoHelper.defaultSeed)
-    public private(set) var encryptStringDisplayType: CryptoEncryptStringDisplayType = .base64
+    public private(set) var keyGenerator: CryptoKeyGenerator = CryptoKeyGenerator(seed: CryptoHelper.defaultSeed)
+    public private(set) var encryptStringType: CryptoEncryptStringDisplayType = .base64
     
-    init(key: KeyGenerator? = nil, type: CryptoEncryptStringDisplayType = CryptoEncryptStringDisplayType.base64) {
+    init(key: CryptoKeyGenerator? = nil, type: CryptoEncryptStringDisplayType = CryptoEncryptStringDisplayType.base64) {
         if let keyGen = key {
             self.keyGenerator = keyGen
         }
@@ -71,7 +31,7 @@ class CryptoHelper {
             let encryptBytes = try aes.encrypt(Array(source.utf8))
             
             var encryptStr = ""
-            switch encryptStringDisplayType {
+            switch encryptStringType {
             case .base64:
                 encryptStr = encryptBytes.toBase64()
             case .hex:
@@ -95,7 +55,7 @@ class CryptoHelper {
             let aes = try AES(key: keyGenerator.aesKeyStr, iv: keyGenerator.aesIvStr)
             
             var decryptStr = ""
-            switch encryptStringDisplayType {
+            switch encryptStringType {
             case .base64:
                 decryptStr = try source.decryptBase64ToString(cipher: aes)
             case .hex:
@@ -110,7 +70,54 @@ class CryptoHelper {
     }
 }
 // MARK: -
-struct KeyGenerator {
+extension CryptoHelper {
+    enum CryptoEncryptStringDisplayType {
+        case base64
+        case hex
+    }
+
+}
+// MARK: -
+extension CryptoHelper {
+
+    static func test() -> Void {
+        cryptoTest()
+        cryptoTest(seed: "2.36.1")
+        cryptoTest(seed: "2.37.0")
+    }
+    
+    fileprivate static func cryptoTest(seed: String? = nil) -> Void {
+        
+        let encryptStrType: CryptoEncryptStringDisplayType = .hex
+        var helper: CryptoHelper = CryptoHelper(type: encryptStrType)
+        
+        if let seedStr = seed {
+            let keyGen = CryptoKeyGenerator(seed: seedStr)
+            helper = CryptoHelper(key: keyGen, type: encryptStrType)
+        }
+        
+        let rawStr = "loginInfoModel"
+        let encryptedStr: String? = helper.encrypt(rawStr)
+        var decryptedStr: String?
+        
+        if let encryptedString = encryptedStr {
+            decryptedStr = helper.decrypt(encryptedString)
+        }
+        
+        print("")
+        print("加密測試:")
+        print("aesKey => \(helper.keyGenerator.aesKeyStr)")
+        print("aesIv => \(helper.keyGenerator.aesIvStr)")
+        
+        print("rawStr = \(rawStr)")
+        print("encryptedStr = \(encryptedStr ?? "")")
+        print("decryptedStr = \(decryptedStr ?? "")")
+        print("")
+    }
+}
+
+// MARK: -
+struct CryptoKeyGenerator {
     private var sourceSeed: String = CryptoHelper.defaultSeed
     var aesKeyStr: String {
         let charArr: [String] = self.sourceSeed.md5().map { String($0) }
