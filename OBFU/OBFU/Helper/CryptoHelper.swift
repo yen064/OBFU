@@ -7,6 +7,12 @@
 import CryptoSwift
 
 class CryptoHelper {
+    
+    enum CryptoEncryptStringDisplayType {
+        case base64
+        case hex
+    }
+    
     static func test() -> Void {
         cryptoTest()
         cryptoTest(seed: "2.36.1")
@@ -15,9 +21,12 @@ class CryptoHelper {
     
     fileprivate static func cryptoTest(seed: String? = nil) -> Void {
         
-        var helper: CryptoHelper = CryptoHelper()
+        let encryptStrType: CryptoEncryptStringDisplayType = .hex
+        var helper: CryptoHelper = CryptoHelper(type: encryptStrType)
+        
         if let seedStr = seed {
-            helper = CryptoHelper(KeyGenerator(seed: seedStr))
+            let keyGen = KeyGenerator(seed: seedStr)
+            helper = CryptoHelper(key: keyGen, type: encryptStrType)
         }
         
         let rawStr = "loginInfoModel"
@@ -43,9 +52,10 @@ class CryptoHelper {
         return "1.0.0"
     }
     public private(set) var keyGenerator: KeyGenerator = KeyGenerator(seed: CryptoHelper.defaultSeed)
+    public private(set) var encryptStringDisplayType: CryptoEncryptStringDisplayType = .base64
     
-    init(_ keyGenerator: KeyGenerator? = nil) {
-        if let keyGen = keyGenerator {
+    init(key: KeyGenerator? = nil, type: CryptoEncryptStringDisplayType = CryptoEncryptStringDisplayType.base64) {
+        if let keyGen = key {
             self.keyGenerator = keyGen
         }
     }
@@ -59,7 +69,15 @@ class CryptoHelper {
         do {
             let aes = try AES(key: keyGenerator.aesKeyStr, iv: keyGenerator.aesIvStr)
             let encryptBytes = try aes.encrypt(Array(source.utf8))
-            let encryptStr = encryptBytes.toBase64()
+            
+            var encryptStr = ""
+            switch encryptStringDisplayType {
+            case .base64:
+                encryptStr = encryptBytes.toBase64()
+            case .hex:
+                encryptStr = encryptBytes.toHexString()
+            }
+            
             return encryptStr
         } catch let error {
             throw error
@@ -75,7 +93,16 @@ class CryptoHelper {
     fileprivate func decrypt(source: String) throws -> String {
         do {
             let aes = try AES(key: keyGenerator.aesKeyStr, iv: keyGenerator.aesIvStr)
-            let decryptStr = try source.decryptBase64ToString(cipher: aes)
+            
+            var decryptStr = ""
+            switch encryptStringDisplayType {
+            case .base64:
+                decryptStr = try source.decryptBase64ToString(cipher: aes)
+            case .hex:
+                let decryptBytes = try Array(hex: source).decrypt(cipher: aes)
+                decryptStr = String(data: Data(decryptBytes), encoding: .utf8) ?? ""
+            }
+            
             return decryptStr
         } catch let error {
             throw error
