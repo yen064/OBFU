@@ -18,6 +18,7 @@ class CryptoHelper {
         if let keyGen = key {
             self.keyGenerator = keyGen
         }
+        self.encryptStringType = type
     }
     func encrypt(_ source: String) -> String? {
         if let encryptStr = try? encrypt(source: source) {
