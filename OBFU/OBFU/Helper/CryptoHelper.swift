@@ -82,14 +82,19 @@ extension CryptoHelper {
 extension CryptoHelper {
 
     static func test() -> Void {
-        cryptoTest()
-        cryptoTest(seed: "2.36.1")
-        cryptoTest(seed: "2.37.0")
+//        cryptoTest()
+//        cryptoTest(sourceStr: "1234")
+//        cryptoTest(sourceStr: "12345")
+//        cryptoTest(seed: "2.37.0")
+        
+//        print("md5() test")
+//        print("11".md5())
+//        print("12".md5())
     }
     
-    fileprivate static func cryptoTest(seed: String? = nil) -> Void {
+    fileprivate static func cryptoTest(seed: String? = nil, sourceStr: String? = nil) -> Void {
         
-        let encryptStrType: CryptoEncryptStringDisplayType = .hex
+        let encryptStrType: CryptoEncryptStringDisplayType = .base64
         var helper: CryptoHelper = CryptoHelper(type: encryptStrType)
         
         if let seedStr = seed {
@@ -97,7 +102,11 @@ extension CryptoHelper {
             helper = CryptoHelper(key: keyGen, type: encryptStrType)
         }
         
-        let rawStr = "loginInfoModel"
+        
+        var rawStr = "This is a test string."
+        if let source = sourceStr {
+            rawStr = source
+        }
         let encryptedStr: String? = helper.encrypt(rawStr)
         var decryptedStr: String?
         
@@ -113,6 +122,8 @@ extension CryptoHelper {
         print("rawStr = \(rawStr)")
         print("encryptedStr = \(encryptedStr ?? "")")
         print("decryptedStr = \(decryptedStr ?? "")")
+        print("rawStr.sha1() = \(rawStr.sha1())")
+        print("encryptedStr.sha1() = \((encryptedStr ?? "").sha1())")
         print("")
     }
 }

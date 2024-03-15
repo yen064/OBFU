@@ -49,8 +49,8 @@ enum Command {
             return (longkey: "path", shortkey: "p")
         case .encryptKey:
             return (longkey: "key", shortkey: "k")
-        case .prefixMark:
-            return (longkey: "prefixMark", shortkey: "pm")
+//        case .prefixMark:
+//            return (longkey: "prefixMark", shortkey: "pm")
         case .suffixMark:
             return (longkey: "suffixMark", shortkey: "sm")
         case .printSelf:
