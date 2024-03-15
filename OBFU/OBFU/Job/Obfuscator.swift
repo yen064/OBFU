@@ -47,6 +47,7 @@ extension Obfuscator {
     func run() {
         
         CryptoHelper.test()
+        TextMiner.test()
         
         if mode == .reflect {
             

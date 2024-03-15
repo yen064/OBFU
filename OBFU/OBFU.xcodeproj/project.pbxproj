@@ -140,11 +140,11 @@
 		935E8EE02B5E5C0600DF40DB /* Job */ = {
 			isa = PBXGroup;
 			children = (
-				93B01FE72B5FB2510079412A /* TextMiner.swift */,
 				935E8EE52B5E69AF00DF40DB /* Command.swift */,
 				935E8EE72B5F50A700DF40DB /* Documentation.swift */,
 				935E8EE12B5E656500DF40DB /* Logger.swift */,
 				935E8EE32B5E693000DF40DB /* Obfuscator.swift */,
+				93B01FE72B5FB2510079412A /* TextMiner.swift */,
 			);
 			path = Job;
 			sourceTree = "<group>";
@@ -170,8 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				CAF674982B901A58003B906C /* 3rdParty */,
-				935E8EE02B5E5C0600DF40DB /* Job */,
 				935E8EDF2B5E5B8800DF40DB /* Helper */,
+				935E8EE02B5E5C0600DF40DB /* Job */,
 				9391AD522B5A682400C92D7B /* main.swift */,
 				93B01FE52B5FB0080079412A /* OBFUError.swift */,
 				9398B9CB2B60F1E200631464 /* OBFUManager.swift */,
@@ -190,11 +190,11 @@
 		CAF674C12B901C52003B906C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CAF674C92B901C52003B906C /* CryptoSwift.framework */,
 				CAF674CB2B901C52003B906C /* CryptoSwift-TestHostApp.app */,
+				CAF674C92B901C52003B906C /* CryptoSwift.framework */,
 				CAF674CD2B901C52003B906C /* CryptoSwiftTests.xctest */,
-				CAF674CF2B901C52003B906C /* TestsPerformance-Mac.xctest */,
 				CAF674D12B901C52003B906C /* TestsPerformance-iOS.xctest */,
+				CAF674CF2B901C52003B906C /* TestsPerformance-Mac.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -302,19 +302,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93B01FE82B5FB2510079412A /* TextMiner.swift in Sources */,
-				93B01FEA2B5FBEBE0079412A /* StringHelper.swift in Sources */,
-				9391AD532B5A682400C92D7B /* main.swift in Sources */,
-				935E8EE82B5F50A700DF40DB /* Documentation.swift in Sources */,
-				935E8EE22B5E656500DF40DB /* Logger.swift in Sources */,
-				935E8EDE2B5E591E00DF40DB /* ExitHelper.swift in Sources */,
 				935E8EE62B5E69AF00DF40DB /* Command.swift in Sources */,
-				935E8EE42B5E693000DF40DB /* Obfuscator.swift in Sources */,
 				CA724F152B8C925600257367 /* CryptoHelper.swift in Sources */,
 				9398B9CA2B60EF5F00631464 /* DateHelper.swift in Sources */,
-				93B01FE62B5FB0080079412A /* OBFUError.swift in Sources */,
+				935E8EE82B5F50A700DF40DB /* Documentation.swift in Sources */,
+				935E8EDE2B5E591E00DF40DB /* ExitHelper.swift in Sources */,
 				93B01FE42B5FAF8A0079412A /* FuncHelper.swift in Sources */,
+				935E8EE22B5E656500DF40DB /* Logger.swift in Sources */,
+				9391AD532B5A682400C92D7B /* main.swift in Sources */,
+				93B01FE62B5FB0080079412A /* OBFUError.swift in Sources */,
 				9398B9CC2B60F1E200631464 /* OBFUManager.swift in Sources */,
+				935E8EE42B5E693000DF40DB /* Obfuscator.swift in Sources */,
+				93B01FEA2B5FBEBE0079412A /* StringHelper.swift in Sources */,
+				93B01FE82B5FB2510079412A /* TextMiner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

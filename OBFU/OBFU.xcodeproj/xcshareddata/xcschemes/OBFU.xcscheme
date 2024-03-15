@@ -23,6 +23,22 @@
                </EnvironmentBuildable>
             </ActionContent>
          </ExecutionAction>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;perl &quot;${PROJECT_DIR}/scripts/sort-Xcode-project-file.pl&quot; &quot;${PROJECT_DIR}/OBFU.xcodeproj/project.pbxproj&quot;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "9391AD4E2B5A682400C92D7B"
+                     BuildableName = "OBFU"
+                     BlueprintName = "OBFU"
+                     ReferencedContainer = "container:OBFU.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
       </PostActions>
       <BuildActionEntries>
          <BuildActionEntry

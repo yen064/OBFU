@@ -8,3 +8,16 @@
 import Foundation
 
 
+
+class TextMiner {
+    
+    init() {
+        print(FileManager.default.currentDirectoryPath)
+    }
+}
+
+extension TextMiner {
+    static func test() {
+        let _ = TextMiner()
+    }
+}
