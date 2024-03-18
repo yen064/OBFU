@@ -22,7 +22,7 @@ final class OBFUManager: NSObject {
     var encryptKey: String = Cmd.encryptKey.VALUE ?? defaultEncryptKey()
 //    var prefixMark: String = Cmd.prefixMark.VALUE ?? defaultPrefixMark()
     var suffixMark: String = Cmd.suffixMark.VALUE ?? defaultSuffixMark()
-    var mode: ObfuscateMode = getObfuscateMode()
+//    var mode: ObfuscateMode = getObfuscateMode()
     var time: Date = Date()
     
     // MARK: - override
@@ -33,7 +33,7 @@ final class OBFUManager: NSObject {
 //        strArray.append(String(format: "> prefixMark: %@", prefixMark))
         strArray.append(String(format: "> suffixMark: %@", suffixMark))
         strArray.append(String(format: "> printSelf: %@", Cmd.printSelf.USE ? "YES" : "NO"))
-        strArray.append(String(format: "> mode: %@", mode.rawValue))
+//        strArray.append(String(format: "> mode: %@", mode.rawValue))
         strArray.append("")
         return strArray.joined(separator: "\n")
     }
@@ -48,17 +48,9 @@ final class OBFUManager: NSObject {
         time = Date()
         
         CryptoHelper.test()
-        let _ = Obfuscator(basePath: workPath, suffixMark: suffixMark)
+        let obfu = Obfuscator(basePath: workPath, suffixMark: suffixMark)
+        print("scan file: \(obfu.fileModels.count) files.")
         
-        if mode == .reflect {
-            
-        }
-        if mode == .file {
-            
-            let a = "abcdefg"
-//            let b = a.randomElement(using: &<#T##RandomNumberGenerator#>)  // .random(length: <#T##Int#>, excluding: <#T##Set<String>#>)
-            
-        }
     }
     
     deinit {

@@ -10,7 +10,6 @@ final class Obfuscator: NSObject {
     
     var fileHelper: FileHelper
     var suffixMark: String
-    
     var fileModels: [FileModel] = []
 
     init(basePath: String, suffixMark: String) {
@@ -28,14 +27,15 @@ final class Obfuscator: NSObject {
 // MARK: - files
 extension Obfuscator {
     func testFindFiles() {
-        let files = getSourceFiles()
-        print(files)
         
-        fileModels = []
-//        files.forEach { file in
-//            let model = FileModel.createModel(f: file)
-//            fileModels.append(model)
-//        }
+        var files: [File] = []
+        files.append(contentsOf: getSourceFiles())
+        
+        files.forEach { file in
+            var model = FileModel.createModel(f: file)
+            model.scanTag(OBFUManager.shared.suffixMark)
+            fileModels.append(model)
+        }
         
     }
     
