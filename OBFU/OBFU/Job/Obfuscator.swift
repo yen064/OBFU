@@ -20,7 +20,8 @@ final class Obfuscator: NSObject {
         self.test()
     }
     func test() {
-        testFindFiles()
+        
+        self.testFindFiles()
     }
 }
 

@@ -23,7 +23,7 @@ final class OBFUManager: NSObject {
 //    var prefixMark: String = Cmd.prefixMark.VALUE ?? defaultPrefixMark()
     var suffixMark: String = Cmd.suffixMark.VALUE ?? defaultSuffixMark()
 //    var mode: ObfuscateMode = getObfuscateMode()
-    var time: Date = Date()
+    var timer: WaitingTimer = WaitingTimer()
     
     // MARK: - override
     override var description: String {
@@ -44,13 +44,27 @@ final class OBFUManager: NSObject {
     }
     
     func run() {
-        
-        time = Date()
-        
-        CryptoHelper.test()
-        let obfu = Obfuscator(basePath: workPath, suffixMark: suffixMark)
-        print("scan file: \(obfu.fileModels.count) files.")
-        
+        timer.run()
+        backgroundThreadExecution {
+            CryptoHelper.test()
+            let obfu = Obfuscator(basePath: self.workPath, suffixMark: self.suffixMark)
+
+            self.timer.stop()
+            
+            print("scan file: \(obfu.fileModels.count) files.")
+        }
+        CFRunLoopRun()
+    }
+    private func backgroundThreadExecution(action: (() -> Void)?) {
+        let queue = DispatchQueue.global(qos: .userInitiated)
+        queue.async {
+            if let runAction = action {
+                runAction()
+            }
+            DispatchQueue.main.async {
+                CFRunLoopStop(CFRunLoopGetCurrent())
+            }
+        }
     }
     
     deinit {

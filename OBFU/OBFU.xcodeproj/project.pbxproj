@@ -21,6 +21,7 @@
 		CA0DFCAF2BA45CF200F8617E /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0DFCAE2BA45CF200F8617E /* FileHelper.swift */; };
 		CA724F152B8C925600257367 /* CryptoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA724F142B8C925600257367 /* CryptoHelper.swift */; };
 		CAEC69FB2BA7EEAE0067D444 /* FileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEC69FA2BA7EEAE0067D444 /* FileModel.swift */; };
+		CAEC6A132BA816040067D444 /* WaitingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEC6A122BA816040067D444 /* WaitingTimer.swift */; };
 		CAF674D22B901C61003B906C /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF674C92B901C52003B906C /* CryptoSwift.framework */; };
 		CAF674D32B901C61003B906C /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF674C92B901C52003B906C /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -104,6 +105,7 @@
 		CA0DFCAE2BA45CF200F8617E /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		CA724F142B8C925600257367 /* CryptoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoHelper.swift; sourceTree = "<group>"; };
 		CAEC69FA2BA7EEAE0067D444 /* FileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileModel.swift; sourceTree = "<group>"; };
+		CAEC6A122BA816040067D444 /* WaitingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingTimer.swift; sourceTree = "<group>"; };
 		CAF674C02B901C52003B906C /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = "CryptoSwift-1.8.1/CryptoSwift.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +149,7 @@
 				935E8EE72B5F50A700DF40DB /* Documentation.swift */,
 				935E8EE12B5E656500DF40DB /* Logger.swift */,
 				935E8EE32B5E693000DF40DB /* Obfuscator.swift */,
+				CAEC6A122BA816040067D444 /* WaitingTimer.swift */,
 			);
 			path = Job;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				9398B9CC2B60F1E200631464 /* OBFUManager.swift in Sources */,
 				935E8EE42B5E693000DF40DB /* Obfuscator.swift in Sources */,
 				93B01FEA2B5FBEBE0079412A /* StringHelper.swift in Sources */,
+				CAEC6A132BA816040067D444 /* WaitingTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
