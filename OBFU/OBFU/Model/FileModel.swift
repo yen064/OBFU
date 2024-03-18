@@ -20,7 +20,7 @@ struct FileModel {
     var originContent: String
     var newContent: String?
     
-    mutating func scanTag(_ tag: String) {
+    mutating func obfuscating(tag: String, obfuKeyValue: [String: String] ) {
         let (isNeedToReplace, newContentStr) = getNewContentWithScanTag(tag)
         if isNeedToReplace {
             newContent = newContentStr
