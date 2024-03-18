@@ -24,6 +24,7 @@ struct FileModel {
         let (isNeedToReplace, newContentStr) = getNewContentWhenObfuscating(tag: tag, obfuData: obfuData)
         if isNeedToReplace {
             newContent = newContentStr
+            obfuData.obfuFileModels.append(self)
         }
     }
     private typealias IsNeedToReplaceNewContent = Bool
@@ -48,7 +49,7 @@ struct FileModel {
             let obfuscatedName: String = {
                 guard let protected = obfuData.obfuKeyValues[originalName] else {
                     let h = CryptoHelper(key: CryptoKeyGenerator(seed: OBFUManager.shared.encryptKey), type: .hex)
-                    let protected = h.encrypt(originalName)?.sha1() ?? (originalName + OBFUManager.shared.encryptKey).sha1()
+                    let protected = h.encrypt(originalName)?.md5() ?? (originalName + OBFUManager.shared.encryptKey).md5()
                     obfuData.obfuKeyValues[originalName] = protected
                     return protected
                 }
@@ -57,34 +58,9 @@ struct FileModel {
             offset += obfuscatedName.count - originalName.count
             content.replaceSubrange(startIndex..<endIndex, with: obfuscatedName)
             
-            
-//            //find ignore
-//            let findIgnore = self.classesOrMethodsToIgnore.first { (s) -> Bool in
-//                return originalName.matchToBoolean(s)
-//                //return s == name
-//            }
-//            if let ignore = findIgnore {
-//                //is ignore
-//            } else {
-//                //not ignore
-//                let obfuscatedName: String = {
-//                    guard let protected = obfsData.obfuscationDict[originalName] else {
-//                        let protected = String.random(length: protectedClassNameSize,
-//                                                      excluding: obfsData.allObfuscatedNames)
-//                        obfsData.obfuscationDict[originalName] = protected
-//                        return protected
-//                    }
-//                    return protected
-//                }()
-//                Logger.log(.protectedReference(originalName: originalName,
-//                                               protectedName: obfuscatedName))
-//                offset += obfuscatedName.count - originalName.count
-//                content.replaceSubrange(startIndex..<endIndex, with: obfuscatedName)
-//            }
-//            //end of ... if let ignore = findIgnore {
+            isNeedToReplace = true
+            newContentString = content
         }
-        
-        return (false, nil)
-        
+        return (isNeedToReplace, newContentString)
     }
 }

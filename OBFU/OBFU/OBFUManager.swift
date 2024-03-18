@@ -43,8 +43,14 @@ final class OBFUManager: NSObject {
             self.obfuscator?.test()
             self.timer.stop()
             
-            let fileCount = self.obfuscator?.fileModels.count ?? 0
-            print("scan file: \(fileCount) files.")
+            let scanFileCount = self.obfuscator?.fileModels.count ?? 0
+            print("scan file: \(scanFileCount) files.")
+            
+            let obfuFileCount = self.obfuscator?.obfuData.obfuFileModels.count ?? 0
+            print("obfuscated file: \(obfuFileCount) files.")
+            
+            let obfuKeyValue = self.obfuscator?.obfuData.obfuKeyValues ?? [:]
+            print("obfuKeyValue = \(obfuKeyValue)")
         }
         CFRunLoopRun()
     }

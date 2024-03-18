@@ -8,6 +8,6 @@
 import Foundation
 
 class ObfuData {
-    var obfuFiles: [File] = []
+    var obfuFileModels: [FileModel] = []
     var obfuKeyValues: [String: String] = [:]
 }
