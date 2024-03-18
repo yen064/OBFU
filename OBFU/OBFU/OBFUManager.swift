@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 final class OBFUManager: NSObject {
     static var shared: OBFUManager = OBFUManager()
     
@@ -39,20 +38,27 @@ final class OBFUManager: NSObject {
         timer.run()
         backgroundThreadExecution {
             
-            CryptoHelper.test()
-            self.obfuscator?.test()
+            self.obfuscator?.run()
             self.timer.stop()
             
-            let scanFileCount = self.obfuscator?.fileModels.count ?? 0
-            print("scan file: \(scanFileCount) files.")
-            
-            let obfuFileCount = self.obfuscator?.obfuData.obfuFileModels.count ?? 0
-            print("obfuscated file: \(obfuFileCount) files.")
-            
-            let obfuKeyValue = self.obfuscator?.obfuData.obfuKeyValues ?? [:]
-            print("obfuKeyValue = \(obfuKeyValue)")
+            if Cmd.printSelf.USE {
+                
+                let scanFileCount = self.obfuscator?.scanFileModels.count ?? 0
+                print("scan file: \(scanFileCount) files.")
+                
+                let obfuFileCount = self.obfuscator?.obfuData.obfuFileModels.count ?? 0
+                print("obfuscated file: \(obfuFileCount) files.")
+                
+//                let obfuKeyValue = self.obfuscator?.obfuData.obfuKeyValues ?? [:]
+//                print("obfuKeyValue = \(obfuKeyValue)")
+                
+                print(self.timer.durationDescription)
+            }
         }
         CFRunLoopRun()
+    }
+    
+    private func printDuration() {
     }
     private func backgroundThreadExecution(action: (() -> Void)?) {
         let queue = DispatchQueue.global(qos: .userInitiated)

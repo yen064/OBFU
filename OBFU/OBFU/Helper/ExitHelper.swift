@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 func exit(error: Error? = nil) -> Never {
     
     sleep(1)

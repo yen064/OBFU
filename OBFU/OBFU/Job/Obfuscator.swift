@@ -10,7 +10,7 @@ final class Obfuscator: NSObject {
     
     var fileHelper: FileHelper
     var tag: String
-    var fileModels: [FileModel] = []
+    var scanFileModels: [FileModel] = []
     var obfuData: ObfuData = ObfuData()
 
     init(basePath: String, tag: String) {
@@ -19,9 +19,8 @@ final class Obfuscator: NSObject {
         
         super.init()
     }
-    func test() {
-        
-        self.testFindFiles()
+    func run() {
+        self.scanFiles()
     }
 }
 
@@ -69,7 +68,7 @@ extension Obfuscator {
 
 // MARK: - 檔案處理
 extension Obfuscator {
-    func testFindFiles() {
+    fileprivate func scanFiles() {
         
         var files: [File] = []
         files = getSourceFiles() + getSwiftFiles() + getStoryboardsAndXibs()
@@ -78,20 +77,20 @@ extension Obfuscator {
         files.forEach { file in
             let model = FileModel.createModel(f: file)
             self.obfuscating(fileModel: model)
-            fileModels.append(model)
+            scanFileModels.append(model)
         }
         
     }
     
-    func getStoryboardsAndXibs() -> [File] {
+    fileprivate func getStoryboardsAndXibs() -> [File] {
         return fileHelper.getFiles(suffix: ".storyboard") + fileHelper.getFiles(suffix: ".xib")
     }
 
-    func getSourceFiles() -> [File] {
+    fileprivate func getSourceFiles() -> [File] {
         return getSwiftFiles() + fileHelper.getFiles(suffix: ".h") + fileHelper.getFiles(suffix: ".m")
     }
 
-    func getSwiftFiles() -> [File] {
+    fileprivate func getSwiftFiles() -> [File] {
         return fileHelper.getFiles(suffix: ".swift")
     }
 }

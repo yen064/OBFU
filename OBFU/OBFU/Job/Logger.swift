@@ -37,8 +37,6 @@ extension Logger {
                              file_: String=#file,
                              line_: Int=#line) -> Void {
         
-        
-        
         var str = any
         if isDetail() {
 //            let pattern = "%@ [%@][line: %d]"
@@ -54,6 +52,7 @@ extension Logger {
         
         let _ = Logger(str, isDebugPrint: isDebugPrint)
     }
+    
     public static func currentPositionInCodes(file_: String=#file
                                               , line_: Int=#line) -> String {
         let pattern = "%@ [%@][line: %d]"
@@ -63,7 +62,5 @@ extension Logger {
                       , (file_ as NSString).lastPathComponent
                       , line_)
     }
-    
 }
-
 typealias log = Logger

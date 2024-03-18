@@ -8,7 +8,16 @@
 import Foundation
 
 class WaitingTimer {
+    
+    var durationDescription: String {
+        let begin = CLongLong(round(self.beginDate.timeIntervalSince1970 * 1000))
+        let now = CLongLong(round(self.endDate.timeIntervalSince1970 * 1000))
+        let diff = Double(now - begin) / 1000
+        return "duration: \(diff) seconds. (begin = \(self.beginDate), end = \(self.endDate))"
+    }
+    
     public private(set) var beginDate: Date = Date()
+    public private(set) var endDate: Date = Date()
     public private(set) var isRun: Bool = false
     func run() {
         if isRun {
@@ -27,14 +36,7 @@ class WaitingTimer {
     }
     func stop() {
         isRun = false
+        self.endDate = Date()
         print("\n")
-        printDuration()
-    }
-    private func printDuration() {
-        let nowDate = Date()
-        let begin = CLongLong(round(self.beginDate.timeIntervalSince1970 * 1000))
-        let now = CLongLong(round(nowDate.timeIntervalSince1970 * 1000))
-        let diff = Double(now - begin) / 1000
-        print("Timer: duration = \(diff) seconds. (begin = \(self.beginDate), end = \(nowDate))")
     }
 }

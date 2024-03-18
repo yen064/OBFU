@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class FileModel {
     
     static func createModel(f: File) -> FileModel {
