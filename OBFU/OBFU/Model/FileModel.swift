@@ -20,15 +20,15 @@ struct FileModel {
     var originContent: String
     var newContent: String?
     
-    mutating func obfuscating(tag: String, obfuKeyValue: [String: String] ) {
-        let (isNeedToReplace, newContentStr) = getNewContentWithScanTag(tag)
+    mutating func obfuscating(tag: String, obfuData: ObfuData) {
+        let (isNeedToReplace, newContentStr) = getNewContentWhenObfuscating(tag: tag, obfuData: obfuData)
         if isNeedToReplace {
             newContent = newContentStr
         }
     }
     private typealias IsNeedToReplaceNewContent = Bool
     private typealias NewContentString = String?
-    private func getNewContentWithScanTag(_ tag: String) -> (IsNeedToReplaceNewContent, NewContentString) {
+    private func getNewContentWhenObfuscating(tag: String, obfuData: ObfuData) -> (IsNeedToReplaceNewContent, NewContentString) {
         var isNeedToReplace: IsNeedToReplaceNewContent = false
         var newContentString: NewContentString = nil
         
@@ -44,6 +44,18 @@ struct FileModel {
             let startIndex = content.index(content.startIndex, offsetBy: range.location)
             let endIndex = content.index(startIndex, offsetBy: range.length)
             let originalName = String(content[startIndex..<endIndex])
+
+            let obfuscatedName: String = {
+                guard let protected = obfuData.obfuKeyValues[originalName] else {
+                    let h = CryptoHelper(key: CryptoKeyGenerator(seed: OBFUManager.shared.encryptKey), type: .hex)
+                    let protected = h.encrypt(originalName)?.sha1() ?? (originalName + OBFUManager.shared.encryptKey).sha1()
+                    obfuData.obfuKeyValues[originalName] = protected
+                    return protected
+                }
+                return protected
+            }()
+            offset += obfuscatedName.count - originalName.count
+            content.replaceSubrange(startIndex..<endIndex, with: obfuscatedName)
             
             
 //            //find ignore

@@ -9,13 +9,13 @@ import Foundation
 final class Obfuscator: NSObject {
     
     var fileHelper: FileHelper
-    var suffixMark: String
+    var tag: String
     var fileModels: [FileModel] = []
-    var obfuModel: ObfuModel = ObfuModel()
+    var obfuData: ObfuData = ObfuData()
 
-    init(basePath: String, suffixMark: String) {
+    init(basePath: String, tag: String) {
         self.fileHelper = FileHelper(basePath: basePath)
-        self.suffixMark = suffixMark
+        self.tag = tag
         
         super.init()
     }
@@ -37,8 +37,8 @@ extension Obfuscator {
             var model = FileModel.createModel(f: file)
             fileModels.append(model)
             
-            model.obfuscating(tag: OBFUManager.shared.suffixMark,
-                              obfuKeyValue: obfuModel.obfuKeyValues)
+            model.obfuscating(tag: OBFUManager.shared.tag,
+                              obfuData: obfuData)
         }
         
     }

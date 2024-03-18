@@ -14,7 +14,7 @@ final class OBFUManager: NSObject {
     // MARK: -
     public private(set) var workPath: String = Cmd.workPath.VALUE ?? defaultWorkPath()
     public private(set) var encryptKey: String = Cmd.encryptKey.VALUE ?? defaultEncryptKey()
-    public private(set) var suffixMark: String = Cmd.suffixMark.VALUE ?? defaultSuffixMark()
+    public private(set) var tag: String = Cmd.tag.VALUE ?? defaultTag()
     public private(set) var timer: WaitingTimer = WaitingTimer()
     public private(set) var obfuscator: Obfuscator?
     
@@ -23,7 +23,7 @@ final class OBFUManager: NSObject {
         var strArray: [String] = [super.description]
         strArray.append(String(format: "> workPath: %@", workPath))
         strArray.append(String(format: "> encryptKey: %@", encryptKey))
-        strArray.append(String(format: "> suffixMark: %@", suffixMark))
+        strArray.append(String(format: "> tag: %@", tag))
         strArray.append(String(format: "> printSelf: %@", Cmd.printSelf.USE ? "YES" : "NO"))
         strArray.append("")
         return strArray.joined(separator: "\n")
@@ -35,7 +35,7 @@ final class OBFUManager: NSObject {
     }
     
     func run() {
-        obfuscator = Obfuscator(basePath: self.workPath, suffixMark: self.suffixMark)
+        obfuscator = Obfuscator(basePath: workPath, tag: tag)
         timer.run()
         backgroundThreadExecution {
             
@@ -87,30 +87,7 @@ final class OBFUManager: NSObject {
     static func defaultWorkPath() -> String {
         return FileManager.default.currentDirectoryPath
     }
-    static func defaultSuffixMark() -> String {
+    static func defaultTag() -> String {
         return "__obfu"
     }
-//    static func defaultMode() -> ObfuscateMode {
-////        return .reflect
-//        return .file
-//    }
-//    static func getObfuscateMode() -> ObfuscateMode {
-//        guard
-//            let VALUE = Cmd.mode.VALUE,
-//            let MODE = ObfuscateMode(rawValue: VALUE)
-//        else {
-//            return defaultMode()
-//        }
-//        return MODE
-//    }
-    
 }
-
-
-//enum ObfuscateMode: String {
-//    case reflect = "reflect"
-//    case file = "file"
-//    static var defaultRawValue: String {
-//        return ObfuscateMode.reflect.rawValue
-//    }
-//}
