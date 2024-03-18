@@ -204,11 +204,11 @@
 		CAF674C12B901C52003B906C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CAF674C92B901C52003B906C /* CryptoSwift.framework */,
 				CAF674CB2B901C52003B906C /* CryptoSwift-TestHostApp.app */,
+				CAF674C92B901C52003B906C /* CryptoSwift.framework */,
 				CAF674CD2B901C52003B906C /* CryptoSwiftTests.xctest */,
-				CAF674CF2B901C52003B906C /* TestsPerformance-Mac.xctest */,
 				CAF674D12B901C52003B906C /* TestsPerformance-iOS.xctest */,
+				CAF674CF2B901C52003B906C /* TestsPerformance-Mac.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
