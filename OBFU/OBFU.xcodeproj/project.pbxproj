@@ -22,6 +22,8 @@
 		CACD29602BA83E6A00F1E81C /* ObfuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD295F2BA83E6A00F1E81C /* ObfuData.swift */; };
 		CAEC69FB2BA7EEAE0067D444 /* FileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEC69FA2BA7EEAE0067D444 /* FileModel.swift */; };
 		CAEC6A132BA816040067D444 /* WaitingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEC6A122BA816040067D444 /* WaitingTimer.swift */; };
+		CAF074392BA92B0300C2C927 /* ObfuReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF074382BA92B0300C2C927 /* ObfuReportModel.swift */; };
+		CAF074402BA92B1D00C2C927 /* ObfuFileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF0743F2BA92B1D00C2C927 /* ObfuFileModel.swift */; };
 		CAF674D22B901C61003B906C /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF674C92B901C52003B906C /* CryptoSwift.framework */; };
 		CAF674D32B901C61003B906C /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF674C92B901C52003B906C /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -106,6 +108,8 @@
 		CACD295F2BA83E6A00F1E81C /* ObfuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObfuData.swift; sourceTree = "<group>"; };
 		CAEC69FA2BA7EEAE0067D444 /* FileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileModel.swift; sourceTree = "<group>"; };
 		CAEC6A122BA816040067D444 /* WaitingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingTimer.swift; sourceTree = "<group>"; };
+		CAF074382BA92B0300C2C927 /* ObfuReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObfuReportModel.swift; sourceTree = "<group>"; };
+		CAF0743F2BA92B1D00C2C927 /* ObfuFileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObfuFileModel.swift; sourceTree = "<group>"; };
 		CAF674C02B901C52003B906C /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = "CryptoSwift-1.8.1/CryptoSwift.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +193,8 @@
 			children = (
 				CAEC69FA2BA7EEAE0067D444 /* FileModel.swift */,
 				CACD295F2BA83E6A00F1E81C /* ObfuData.swift */,
+				CAF0743F2BA92B1D00C2C927 /* ObfuFileModel.swift */,
+				CAF074382BA92B0300C2C927 /* ObfuReportModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -327,7 +333,9 @@
 				9391AD532B5A682400C92D7B /* main.swift in Sources */,
 				CACD29602BA83E6A00F1E81C /* ObfuData.swift in Sources */,
 				93B01FE62B5FB0080079412A /* OBFUError.swift in Sources */,
+				CAF074402BA92B1D00C2C927 /* ObfuFileModel.swift in Sources */,
 				9398B9CC2B60F1E200631464 /* OBFUManager.swift in Sources */,
+				CAF074392BA92B0300C2C927 /* ObfuReportModel.swift in Sources */,
 				935E8EE42B5E693000DF40DB /* Obfuscator.swift in Sources */,
 				93B01FEA2B5FBEBE0079412A /* StringHelper.swift in Sources */,
 				CAEC6A132BA816040067D444 /* WaitingTimer.swift in Sources */,

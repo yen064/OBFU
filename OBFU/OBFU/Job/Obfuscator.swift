@@ -12,6 +12,7 @@ final class Obfuscator: NSObject {
     var tag: String
     var scanFileModels: [FileModel] = []
     var obfuData: ObfuData = ObfuData()
+    var logStack: [String] = []
 
     init(basePath: String, tag: String) {
         self.fileHelper = FileHelper(basePath: basePath)
@@ -20,15 +21,26 @@ final class Obfuscator: NSObject {
         super.init()
     }
     func run() {
-        self.scanFiles()
+        self.scanFile()
+        self.writeFile()
     }
 }
 
 // MARK: - 混淆
 extension Obfuscator {
+    func writeFile() {
+        obfuData.obfuFileModels.forEach { fileModel in
+            if let f = fileModel.file,
+               let text = fileModel.newContent {
+                f.write(text)
+            }
+        }
+//        obfuData.
+    }
     func obfuscating(fileModel: FileModel) {
         
         var isNeedToReplaceNewContent: Bool = false
+        var keyValues: [String: String] = [:]
         
         // 搬原作者的 code, 這段程式已 work, 無需驗證
         var offset = 0
@@ -47,7 +59,8 @@ extension Obfuscator {
                 guard let protected = obfuData.obfuKeyValues[originalName] else {
                     let h = CryptoHelper(key: CryptoKeyGenerator(seed: OBFUManager.shared.encryptKey), type: .hex)
                     let protected = h.encrypt(originalName)?.md5() ?? (originalName + OBFUManager.shared.encryptKey).md5()
-                    obfuData.obfuKeyValues[originalName] = protected
+                    obfuData.obfuKeyValues[originalName] = protected // 全部的 key values 儲存
+                    keyValues[originalName] = protected // 獨立的 key values 儲存
                     return protected
                 }
                 return protected
@@ -60,15 +73,17 @@ extension Obfuscator {
         
         if isNeedToReplaceNewContent {
             fileModel.newContent = content
-            obfuData.obfuFileModels.append(fileModel)
+            
+            let obfuFileModel = ObfuFileModel(sourceModel: fileModel)
+            obfuFileModel.obfuKeyValues = keyValues // 獨立的 key values 儲存
+            obfuData.obfuFileModels.append(obfuFileModel)
         }
-
     }
 }
 
 // MARK: - 檔案處理
 extension Obfuscator {
-    fileprivate func scanFiles() {
+    fileprivate func scanFile() {
         
         var files: [File] = []
         files = getSourceFiles() + getSwiftFiles() + getStoryboardsAndXibs()

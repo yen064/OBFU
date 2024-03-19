@@ -28,17 +28,18 @@ internal struct Logger {
 // MARK: -
 extension Logger {
     
-    private static func isDetail() -> Bool {
-        return true
-    }
+//    private static func isDetail() -> Bool {
+//        return true
+//    }
     
     static func write(_ any: Any,
-                             isDebugPrint: Bool?=nil,
-                             file_: String=#file,
-                             line_: Int=#line) -> Void {
+                      isDebugPrint: Bool?=nil,
+                      isDetail: Bool = false,
+                      file_: String=#file,
+                      line_: Int=#line) -> Void {
         
         var str = any
-        if isDetail() {
+        if isDetail {
 //            let pattern = "%@ [%@][line: %d]"
 //            let datetimeStr = String(format: "%@ %@", Date().shortDate, Date().longTime)
 //            let prefixStr = String(format: pattern
