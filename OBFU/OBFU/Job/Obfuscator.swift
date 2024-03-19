@@ -12,7 +12,6 @@ final class Obfuscator: NSObject {
     var tag: String
     var scanFileModels: [FileModel] = []
     var obfuData: ObfuData = ObfuData()
-    var logStack: [String] = []
 
     init(basePath: String, tag: String) {
         self.fileHelper = FileHelper(basePath: basePath)

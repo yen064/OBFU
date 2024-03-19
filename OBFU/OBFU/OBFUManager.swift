@@ -27,13 +27,16 @@ final class OBFUManager: NSObject {
         strArray.append("")
         return strArray.joined(separator: "\n")
     }
-    override init() {
-        super.init()
-        printDocumentationAutomatically()
-        printSelf()
-    }
     
     func run() {
+        // MARK: command line print
+        printDocumentationAutomatically()
+        if !isOkToRun() {
+            return
+        }
+        printSelf()
+        
+        // MARK: 混淆開始
         obfuscator = Obfuscator(basePath: workPath, tag: tag)
         timer.run()
         backgroundThreadExecution {
@@ -77,6 +80,12 @@ final class OBFUManager: NSObject {
     }
     
     // MARK: - private
+    private func isOkToRun() -> Bool {
+        if Cmd.help.USE == true {
+            return false // 印出 help, 不可執行
+        }
+        return true
+    }
     private func printDocumentationAutomatically() {
         if Cmd.isAnyCommandLineArg && !Cmd.help.USE {
             return
