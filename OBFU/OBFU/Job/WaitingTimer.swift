@@ -27,7 +27,7 @@ class WaitingTimer {
         }
         isRun = true
         self.beginDate = Date()
-        output("waiting", isLineBreak: false)
+        output("Wait for obfuscating", isLineBreak: false)
         Timer.scheduledTimer(withTimeInterval: 0.123, repeats: true) { t in
             if self.isRun {
                 self.output(".", isLineBreak: false)

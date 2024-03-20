@@ -17,7 +17,6 @@ enum Command {
     case workPath
     case encryptKey
     case tag
-    case printSelf
     case unknown
     
     var VALUE: String? {
@@ -49,8 +48,6 @@ enum Command {
             return (longkey: "key", shortkey: "k")
         case .tag:
             return (longkey: "tag", shortkey: "tag")
-        case .printSelf:
-            return (longkey: "printSelf", shortkey: "ps")
         default:
             return (longkey: "unknown", shortkey: "unknown")
         }

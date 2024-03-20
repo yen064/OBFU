@@ -23,7 +23,6 @@ final class OBFUManager: NSObject {
         strArray.append(String(format: "> workPath: %@", workPath))
         strArray.append(String(format: "> encryptKey: %@", encryptKey))
         strArray.append(String(format: "> tag: %@", tag))
-        strArray.append(String(format: "> printSelf: %@", Cmd.printSelf.USE ? "YES" : "NO"))
         strArray.append("")
         return strArray.joined(separator: "\n")
     }
@@ -40,38 +39,13 @@ final class OBFUManager: NSObject {
         obfuscator = Obfuscator(basePath: workPath, tag: tag)
         timer.run()
         backgroundThreadExecution {
-            
             self.obfuscator?.run()
             self.timer.stop()
-            
-            if Cmd.printSelf.USE {
-                
-                let scanFileCount = self.obfuscator?.scanFileModels.count ?? 0
-                log.write("scan file: \(scanFileCount) files.")
-                
-                let obfuFileCount = self.obfuscator?.obfuData.obfuFileModels.count ?? 0
-                log.write("obfuscated file: \(obfuFileCount) files.")
-                
-//                let obfuKeyValue = self.obfuscator?.obfuData.obfuKeyValues ?? [:]
-//                print("obfuKeyValue = \(obfuKeyValue)")
-                
-            }
-            log.write(self.timer.durationDescription)
+            self.printAfterObfuscated()
         }
         CFRunLoopRun()
     }
     
-    private func backgroundThreadExecution(action: (() -> Void)?) {
-        let queue = DispatchQueue.global(qos: .userInitiated)
-        queue.async {
-            if let runAction = action {
-                runAction()
-            }
-            DispatchQueue.main.async {
-                CFRunLoopStop(CFRunLoopGetCurrent())
-            }
-        }
-    }
     
     deinit {
         
@@ -85,11 +59,28 @@ final class OBFUManager: NSObject {
     }
     
     // MARK: - private
-    private func isOkToRun() -> Bool {
-        if Cmd.help.USE == true {
-            return false // 印出 help, 不可執行
+    private func backgroundThreadExecution(action: (() -> Void)?) {
+        let queue = DispatchQueue.global(qos: .userInitiated)
+        queue.async {
+            if let runAction = action {
+                runAction()
+            }
+            DispatchQueue.main.async {
+                CFRunLoopStop(CFRunLoopGetCurrent())
+            }
         }
-        return true
+    }
+    private func printAfterObfuscated() {
+        let scanFileCount = self.obfuscator?.scanFileModels.count ?? 0
+        log.write("scan file: \(scanFileCount) files.")
+        
+        let obfuFileCount = self.obfuscator?.obfuData.obfuFileModels.count ?? 0
+        log.write("obfuscated file: \(obfuFileCount) files.")
+        
+//                let obfuKeyValue = self.obfuscator?.obfuData.obfuKeyValues ?? [:]
+//                print("obfuKeyValue = \(obfuKeyValue)")
+        
+        log.write(self.timer.durationDescription)
     }
     private func printDocumentationAutomatically() {
         if !isDocumentationPrintOnly() {
@@ -98,10 +89,13 @@ final class OBFUManager: NSObject {
         Documentation.dump()
     }
     private func printSelf() {
-        if !Cmd.printSelf.USE {
-            return
-        }
         log.write(self)
+    }
+    private func isOkToRun() -> Bool {
+        if isDocumentationPrintOnly() {
+            return false
+        }
+        return true
     }
     
     // MARK: - default (static)
