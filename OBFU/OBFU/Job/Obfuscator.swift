@@ -5,6 +5,7 @@
 //  Created by aaron on 2024/1/22.
 //
 import Foundation
+import CryptoSwift
 
 final class Obfuscator: NSObject {
     
@@ -26,6 +27,13 @@ final class Obfuscator: NSObject {
 }
 
 // MARK: - 混淆
+extension String {
+    fileprivate func obfu() -> String {
+        let h = CryptoHelper(key: CryptoKeyGenerator(seed: OBFUManager.shared.encryptKey), type: .hex)
+        let obfuStr = h.encrypt(self)?.md5() ?? (self + OBFUManager.shared.encryptKey).md5()
+        return "obfu\(obfuStr)"
+    }
+}
 extension Obfuscator {
     func writeFile() {
         obfuData.obfuFileModels.forEach { fileModel in
@@ -56,8 +64,7 @@ extension Obfuscator {
 
             let obfuscatedName: String = {
                 guard let protected = obfuData.obfuKeyValues[originalName] else {
-                    let h = CryptoHelper(key: CryptoKeyGenerator(seed: OBFUManager.shared.encryptKey), type: .hex)
-                    let protected = h.encrypt(originalName)?.md5() ?? (originalName + OBFUManager.shared.encryptKey).md5()
+                    let protected = originalName.obfu()
                     obfuData.obfuKeyValues[originalName] = protected // 全部的 key values 儲存
                     keyValues[originalName] = protected // 獨立的 key values 儲存
                     return protected
