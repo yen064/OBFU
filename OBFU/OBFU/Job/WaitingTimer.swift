@@ -13,7 +13,9 @@ class WaitingTimer {
         let begin = CLongLong(round(self.beginDate.timeIntervalSince1970 * 1000))
         let now = CLongLong(round(self.endDate.timeIntervalSince1970 * 1000))
         let diff = Double(now - begin) / 1000
-        return "duration: \(diff) seconds. (begin = \(self.beginDate), end = \(self.endDate))"
+        let beginDateStr = beginDate.localizedDescription(date: .short, time: .long)
+        let endDateStr = endDate.localizedDescription(date: .short, time: .long)
+        return "duration: \(diff) seconds. (from: \(beginDateStr), to: \(endDateStr))"
     }
     
     public private(set) var beginDate: Date = Date()
@@ -25,10 +27,10 @@ class WaitingTimer {
         }
         isRun = true
         self.beginDate = Date()
-        print("waiting", terminator: "")
+        output("waiting", isLineBreak: false)
         Timer.scheduledTimer(withTimeInterval: 0.123, repeats: true) { t in
             if self.isRun {
-                print(".", terminator: "")
+                self.output(".", isLineBreak: false)
             } else {
                 t.invalidate()
             }
@@ -37,6 +39,16 @@ class WaitingTimer {
     func stop() {
         isRun = false
         self.endDate = Date()
-        print("\n")
+        output("\n", isLineBreak: true)
+    }
+    fileprivate func output(_ str: String, isLineBreak: Bool) {
+        if OBFUManager.shared.isDocumentationPrintOnly() {
+            return
+        }
+        if isLineBreak {
+            print(str)
+        } else {
+            print(str, terminator: "")
+        }
     }
 }

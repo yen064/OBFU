@@ -10,7 +10,7 @@ import Foundation
 final class Documentation: NSObject {
     static func dump() {
         let documentation = Documentation()
-        print(documentation)
+        log.write(documentation)
     }
     override var description: String {
         var strArray: [String] = []

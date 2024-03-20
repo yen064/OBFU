@@ -55,14 +55,12 @@ final class OBFUManager: NSObject {
 //                let obfuKeyValue = self.obfuscator?.obfuData.obfuKeyValues ?? [:]
 //                print("obfuKeyValue = \(obfuKeyValue)")
                 
-                log.write(self.timer.durationDescription)
             }
+            log.write(self.timer.durationDescription)
         }
         CFRunLoopRun()
     }
     
-    private func printDuration() {
-    }
     private func backgroundThreadExecution(action: (() -> Void)?) {
         let queue = DispatchQueue.global(qos: .userInitiated)
         queue.async {
@@ -78,6 +76,13 @@ final class OBFUManager: NSObject {
     deinit {
         
     }
+    // MARK: - public
+    func isDocumentationPrintOnly() -> Bool {
+        if Cmd.isAnyCommandLineArg && !Cmd.help.USE {
+            return false // 如果沒有任何參數, 也沒使用 h 參數 就不印出 documentation
+        }
+        return true
+    }
     
     // MARK: - private
     private func isOkToRun() -> Bool {
@@ -87,11 +92,9 @@ final class OBFUManager: NSObject {
         return true
     }
     private func printDocumentationAutomatically() {
-        if Cmd.isAnyCommandLineArg && !Cmd.help.USE {
+        if !isDocumentationPrintOnly() {
             return
         }
-        // TODO:
-        //  印些什麼
         Documentation.dump()
     }
     private func printSelf() {
