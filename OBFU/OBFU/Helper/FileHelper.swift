@@ -51,20 +51,18 @@ class File {
     func read() -> String {
         do {
             return try String(contentsOfFile: path, encoding: .utf8)
-        } catch {
-//            Logger.log(.fatal(error: error.localizedDescription))
-//            exit(error: true)
-            exit()
+        } catch let err {
+            log.writeError(err)
+            exit(error: err)
         }
     }
 
     func write(_ text: String) {
         do {
             try text.write(toFile: path, atomically: false, encoding: .utf8)
-        } catch {
-//            Logger.log(.fatal(error: error.localizedDescription))
-//            exit(error: true)
-            exit()
+        } catch let err {
+            log.writeError(err)
+            exit(error: err)
         }
     }
 }

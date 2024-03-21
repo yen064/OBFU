@@ -31,7 +31,15 @@ extension Logger {
 //    private static func isDetail() -> Bool {
 //        return true
 //    }
-    
+    static func writeError(_ any: Any,
+                           file_: String=#file,
+                           line_: Int=#line) -> Void {
+        DispatchQueue.main.async {
+            CFRunLoopStop(CFRunLoopGetCurrent())
+        }
+        print("\n")
+        write(any, isDetail: true, file_: file_, line_: line_)
+    }
     static func write(_ any: Any,
                       isDebugPrint: Bool?=nil,
                       isDetail: Bool = false,

@@ -12,9 +12,9 @@ class ReportMaker: CustomStringConvertible {
         
         return """
         //
-        // OBFU Conversion KayValues Mapping Report
+        // OBFU Conversion Mapping Report File
         //
-        //  (\(Date().fullDate)
+        //  (Generated on: \(Date().fullDateTime))
         //
         
         """ + modelsToText()
@@ -24,7 +24,10 @@ class ReportMaker: CustomStringConvertible {
     }
     private var models: [ReportParagraphModel] = []
     private var basePath: String = "./"
-    private var fileName: String = defaultFileName()
+    private(set) var fileName: String = defaultFileName()
+    var filePath: String {
+        basePath + (basePath.last == "/" ? "" : "/") + fileName
+    }
     
     init(models: [ReportParagraphModel], basePath: String, fileName: String? = nil) {
         self.models = models
@@ -35,16 +38,14 @@ class ReportMaker: CustomStringConvertible {
     }
     func run() {
         let text = description
-        let filePath = basePath + (basePath.last == "/" ? "" : "/") + fileName
-        write(text, filePath: filePath)
+        write(text)
     }
-    fileprivate func write(_ text: String, filePath: String) {
+    fileprivate func write(_ text: String) {
         do {
             try text.write(toFile: filePath, atomically: false, encoding: .utf8)
-        } catch {
-//            Logger.log(.fatal(error: error.localizedDescription))
-//            exit(error: true)
-            exit()
+        } catch let err {
+            log.writeError(err)
+            exit(error: err)
         }
     }
     
@@ -57,7 +58,11 @@ class ReportMaker: CustomStringConvertible {
         return text
     }
     fileprivate static func defaultFileName() -> String {
-        return "OBFUReport\(Date().shortDate).txt"
+        let format = "yyyy MM dd"
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        let dateStr = dateFormatter.string(from: Date())
+        return "OBFUReport \(dateStr).txt"
     }
 }
 // MARK: - ReportMakerDelegate / ReportParagraphModel
