@@ -98,7 +98,17 @@ extension Obfuscator {
 }
 extension Obfuscator: ReportMakerDelegate {
     func toReportParagraphModel() -> ReportParagraphModel {
-        let model = ReportParagraphModel()
+        
+        let title: String = "Summary"
+        var contentArray: [String] = []
+        contentArray.append(" workPath: \(OBFUManager.shared.workPath)")
+        contentArray.append(" reportPath: \(OBFUManager.shared.reportPath)")
+        contentArray.append(" encryptKey: \(OBFUManager.shared.encryptKey)")
+        contentArray.append(" tag: \(OBFUManager.shared.tag)")
+        contentArray.append(" scan file: \(scanFileModels.count) files.")
+        contentArray.append(" obfuscated file: \(obfuData.obfuFileModels.count) files.")
+        
+        let model = ReportParagraphModel(title: title, contentArray: contentArray)
         return model
     }
 }

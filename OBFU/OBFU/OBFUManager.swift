@@ -22,6 +22,7 @@ final class OBFUManager: NSObject {
     override var description: String {
         var strArray: [String] = [super.description]
         strArray.append(String(format: "> workPath: %@", workPath))
+        strArray.append(String(format: "> reportPath: %@", reportPath))
         strArray.append(String(format: "> encryptKey: %@", encryptKey))
         strArray.append(String(format: "> tag: %@", tag))
         strArray.append("")
@@ -72,16 +73,11 @@ final class OBFUManager: NSObject {
         }
     }
     private func printAfterObfuscated() {
-        let scanFileCount = self.obfuscator?.scanFileModels.count ?? 0
-        log.write("scan file: \(scanFileCount) files.")
-        
-        let obfuFileCount = self.obfuscator?.obfuData.obfuFileModels.count ?? 0
-        log.write("obfuscated file: \(obfuFileCount) files.")
-        
-//                let obfuKeyValue = self.obfuscator?.obfuData.obfuKeyValues ?? [:]
-//                print("obfuKeyValue = \(obfuKeyValue)")
-        
-        log.write(self.timer.durationDescription)
+        if let reportModel = self.obfuscator?.toReportParagraphModel() {
+            let reportStr = reportModel.paragraphContentArray.joined(separator: "\n")
+            log.write(reportStr)
+        }
+        log.write(" " + OBFUManager.shared.timer.durationDescription)
     }
     private func printDocumentationAutomatically() {
         if !isDocumentationPrintOnly() {

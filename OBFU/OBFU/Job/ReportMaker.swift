@@ -9,18 +9,13 @@ import Foundation
 
 class ReportMaker: CustomStringConvertible {
     var description: String {
-        
         return """
         //
         // OBFU Conversion Mapping Report File
         //
         //  (Generated on: \(Date().localizedDescription(date: .short, time: .medium )) )
         //
-        
-        """ + modelsToText()
-//        + obfuscationData.obfuscationDict.reduce("") {
-//            $0 + "\n\($1.key) ===> \($1.value)"
-//        }
+        """ + "\n" + modelsToText()
     }
     private var models: [ReportParagraphModel] = []
     private var basePath: String = "./"
@@ -84,9 +79,24 @@ protocol ReportMakerDelegate {
 }
 
 struct ReportParagraphModel: CustomStringConvertible {
-    private var paragraphTitle: String = ""
-    private var strArray: [String] = []
+    public private(set) var paragraphTitle: String = "尚未設定段落 title"
+    public private(set) var paragraphContentArray: [String] = []
     var description: String {
-        return paragraphTitle + "\n" + strArray.joined(separator: "\n ")
+        let invisibleStr = "."
+        let linebreakStr = "\n"
+        var descArray: [String] = []
+        descArray.append(invisibleStr)
+        descArray.append(invisibleStr)
+        descArray.append(paragraphTitle)
+        descArray.append(invisibleStr)
+        descArray.append(contentsOf: paragraphContentArray)
+        return descArray.joined(separator: linebreakStr)
+    }
+    init() {
+        
+    }
+    init(title: String, contentArray: [String]) {
+        self.paragraphTitle = title
+        self.paragraphContentArray = contentArray
     }
 }
