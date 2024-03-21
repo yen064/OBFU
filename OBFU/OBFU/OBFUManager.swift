@@ -12,6 +12,7 @@ final class OBFUManager: NSObject {
     
     // MARK: -
     public private(set) var workPath: String = Cmd.workPath.VALUE ?? defaultWorkPath()
+    public private(set) var reportPath: String = Cmd.reportPath.VALUE ?? defaultReportPath()
     public private(set) var encryptKey: String = Cmd.encryptKey.VALUE ?? defaultEncryptKey()
     public private(set) var tag: String = Cmd.tag.VALUE ?? defaultTag()
     public private(set) var timer: WaitingTimer = WaitingTimer()
@@ -103,6 +104,9 @@ final class OBFUManager: NSObject {
         return "1.0.0"
     }
     static func defaultWorkPath() -> String {
+        return FileManager.default.currentDirectoryPath
+    }
+    static func defaultReportPath() -> String {
         return FileManager.default.currentDirectoryPath
     }
     static func defaultTag() -> String {

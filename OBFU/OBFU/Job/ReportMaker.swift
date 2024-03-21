@@ -14,7 +14,7 @@ class ReportMaker: CustomStringConvertible {
         //
         // OBFU Conversion Mapping Report File
         //
-        //  (Generated on: \(Date().fullDateTime))
+        //  (Generated on: \(Date().localizedDescription(date: .short, time: .medium )) )
         //
         
         """ + modelsToText()
@@ -24,22 +24,36 @@ class ReportMaker: CustomStringConvertible {
     }
     private var models: [ReportParagraphModel] = []
     private var basePath: String = "./"
-    private(set) var fileName: String = defaultFileName()
+    fileprivate var _filePath: String? = nil
     var filePath: String {
-        basePath + (basePath.last == "/" ? "" : "/") + fileName
+        if let filePathStr = _filePath {
+            return filePathStr
+        }
+        var folderPath: String {
+            let reportFolderName = "OBFUReport"
+            let pathStr = basePath + (basePath.last == "/" ? "" : "/") + reportFolderName
+            try? FileManager.default.createDirectory(atPath: pathStr, withIntermediateDirectories: true, attributes: nil)
+            return pathStr
+        }
+        _filePath = folderPath + "/" + fileName
+        return _filePath!
     }
+    private(set) var fileName: String = defaultFileName()
     
+    // MARK: -
     init(models: [ReportParagraphModel], basePath: String, fileName: String? = nil) {
         self.models = models
         self.basePath = basePath
-        if let fileName_ = fileName {
-            self.fileName = fileName_
+        if let fileNameStr = fileName {
+            self.fileName = fileNameStr
         }
     }
     func run() {
         let text = description
         write(text)
     }
+    
+    // MARK: -
     fileprivate func write(_ text: String) {
         do {
             try text.write(toFile: filePath, atomically: false, encoding: .utf8)
@@ -48,7 +62,6 @@ class ReportMaker: CustomStringConvertible {
             exit(error: err)
         }
     }
-    
     fileprivate func modelsToText() -> String {
         var txtArray: [String] = []
         models.forEach { model in

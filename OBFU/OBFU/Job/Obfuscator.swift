@@ -51,7 +51,7 @@ extension Obfuscator {
         obfuData.obfuFileModels.forEach { obfuFileModel in
             reportModels.append(obfuFileModel.toReportParagraphModel())
         }
-        let maker = ReportMaker(models: reportModels, basePath: fileHelper.basePath)
+        let maker = ReportMaker(models: reportModels, basePath: OBFUManager.shared.reportPath)
         maker.run() // 寫出 report
     }
     func obfuscating(fileModel: FileModel) {

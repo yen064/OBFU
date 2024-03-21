@@ -15,6 +15,7 @@ enum Command {
     
     case help
     case workPath
+    case reportPath
     case encryptKey
     case tag
     case unknown
@@ -44,6 +45,8 @@ enum Command {
             return (longkey: "help", shortkey: "h")
         case .workPath:
             return (longkey: "path", shortkey: "p")
+        case .reportPath:
+            return (longkey: "reportpath", shortkey: "rp")
         case .encryptKey:
             return (longkey: "key", shortkey: "k")
         case .tag:
