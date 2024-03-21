@@ -11,3 +11,9 @@ class ObfuData {
     var obfuFileModels: [ObfuFileModel] = []
     var obfuKeyValues: [String: String] = [:]
 }
+extension ObfuData: ReportMakerDelegate {
+    func toReportParagraphModel() -> ReportParagraphModel {
+        let model = ReportParagraphModel()
+        return model
+    }
+}

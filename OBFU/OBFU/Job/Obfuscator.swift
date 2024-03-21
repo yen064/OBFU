@@ -36,13 +36,23 @@ extension String {
 }
 extension Obfuscator {
     func writeFile() {
+        // MARK: replace obfu
         obfuData.obfuFileModels.forEach { fileModel in
             if let f = fileModel.file,
                let text = fileModel.newContent {
                 f.write(text)
             }
         }
-//        obfuData.
+        
+        // MARK: Report maker
+        var reportModels: [ReportParagraphModel] = []
+        reportModels.append(self.toReportParagraphModel())
+        reportModels.append(obfuData.toReportParagraphModel())
+        obfuData.obfuFileModels.forEach { obfuFileModel in
+            reportModels.append(obfuFileModel.toReportParagraphModel())
+        }
+        let maker = ReportMaker(models: reportModels, basePath: fileHelper.basePath)
+        maker.run() // 寫出 report
     }
     func obfuscating(fileModel: FileModel) {
         
@@ -84,6 +94,12 @@ extension Obfuscator {
             obfuFileModel.obfuKeyValues = keyValues // 獨立的 key values 儲存
             obfuData.obfuFileModels.append(obfuFileModel)
         }
+    }
+}
+extension Obfuscator: ReportMakerDelegate {
+    func toReportParagraphModel() -> ReportParagraphModel {
+        let model = ReportParagraphModel()
+        return model
     }
 }
 

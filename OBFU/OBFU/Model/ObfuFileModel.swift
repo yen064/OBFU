@@ -19,3 +19,10 @@ class ObfuFileModel: FileModel {
         self.newContent = sourceModel.newContent
     }
 }
+
+extension ObfuFileModel: ReportMakerDelegate {
+    func toReportParagraphModel() -> ReportParagraphModel {
+        let model = ReportParagraphModel()
+        return model
+    }    
+}
