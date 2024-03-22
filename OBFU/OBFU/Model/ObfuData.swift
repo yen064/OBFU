@@ -13,7 +13,12 @@ class ObfuData {
 }
 extension ObfuData: ReportMakerDelegate {
     func toReportParagraphModel() -> ReportParagraphModel {
-        let model = ReportParagraphModel()
+        let title: String = "Obfuscated Key/Value mapping table (Key/Value count: \(obfuKeyValues.keys.count))"
+        var contentArray: [String] = []
+        obfuKeyValues.keys.forEach { key in
+            contentArray.append(" \(key) => \(obfuKeyValues[key] ?? "無資料")")
+        }
+        let model = ReportParagraphModel(title: title, contentArray: contentArray)
         return model
     }
 }

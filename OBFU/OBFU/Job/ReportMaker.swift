@@ -82,7 +82,7 @@ struct ReportParagraphModel: CustomStringConvertible {
     public private(set) var paragraphTitle: String = "尚未設定段落 title"
     public private(set) var paragraphContentArray: [String] = []
     var description: String {
-        let invisibleStr = "."
+        let invisibleStr = ""
         let linebreakStr = "\n"
         var descArray: [String] = []
         descArray.append(invisibleStr)
