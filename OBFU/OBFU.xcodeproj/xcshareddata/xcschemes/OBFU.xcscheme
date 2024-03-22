@@ -92,10 +92,6 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-ps"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
             argument = "-p /Users/aaronyen/Desktop/git/AllPay_Official_app_iOS "
             isEnabled = "NO">
          </CommandLineArgument>
