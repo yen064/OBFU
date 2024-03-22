@@ -50,5 +50,6 @@ class WaitingTimer {
         } else {
             print(str, terminator: "")
         }
+        fflush(stdout)
     }
 }
