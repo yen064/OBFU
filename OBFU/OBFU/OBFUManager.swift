@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class OBFUManager: NSObject {
+final class OBFUManager: CustomStringConvertible {
     static var shared: OBFUManager = OBFUManager()
     
     // MARK: -
@@ -18,15 +18,8 @@ final class OBFUManager: NSObject {
     public private(set) var timer: WaitingTimer = WaitingTimer()
     public private(set) var obfuscator: Obfuscator?
     
-    // MARK: - override
-    override var description: String {
-        var strArray: [String] = [super.description]
-        strArray.append(String(format: "> workPath: %@", workPath))
-        strArray.append(String(format: "> reportPath: %@", reportPath))
-        strArray.append(String(format: "> encryptKey: %@", encryptKey))
-        strArray.append(String(format: "> tag: %@", tag))
-        strArray.append("")
-        return strArray.joined(separator: "\n")
+    var description: String {
+        return "OBFU run!"
     }
     
     func run() {
