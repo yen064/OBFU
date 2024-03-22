@@ -76,13 +76,13 @@ extension Obfuscator {
                 guard let protected = obfuData.obfuKeyValues[originalName] else {
                     let protected = originalName.obfu()
                     obfuData.obfuKeyValues[originalName] = protected // 全部的 key values 儲存
-                    keyValues[originalName] = protected // 獨立的 key values 儲存
                     return protected
                 }
                 return protected
             }()
             offset += obfuscatedName.count - originalName.count
             content.replaceSubrange(startIndex..<endIndex, with: obfuscatedName)
+            keyValues[originalName] = obfuscatedName // 獨立的 key values 儲存
             
             isNeedToReplaceNewContent = true
         } // end of ... for match in content.match(regex: regexString) {
