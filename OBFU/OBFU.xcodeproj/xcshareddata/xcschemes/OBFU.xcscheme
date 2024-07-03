@@ -88,15 +88,15 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-k 2.30.1"
+            argument = "-key 1.0.0"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-p /Users/aaronyen/Desktop/git/AllPay_Official_app_iOS "
+            argument = "-p /Users/aaronyen/Desktop/git/gwpay_app_ios/"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-tag __Allpay"
+            argument = "-rp /Users/aaronyen/Desktop/TEST_OBFU_REPORT/"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument

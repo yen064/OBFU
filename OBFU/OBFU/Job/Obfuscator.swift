@@ -87,9 +87,20 @@ extension Obfuscator {
             isNeedToReplaceNewContent = true
         } // end of ... for match in content.match(regex: regexString) {
         
-        if isNeedToReplaceNewContent {
-            fileModel.newContent = content
+        // 不是重複的檔案, 可以加入混淆 file models
+        let isNotDuplicatedFilePath = (nil == obfuData.obfuFileModels.firstIndex(where: { findFileModel in
+            if let findFile = findFileModel.file,
+               let currentFile = fileModel.file {
+                return findFile.path.lowercased() == currentFile.path.lowercased()
+            }
+            return false
+        }))
+        
+        // 需要置換混淆過後的內容 & 不是重複的檔案
+        if isNeedToReplaceNewContent == true,
+           isNotDuplicatedFilePath == true {
             
+            fileModel.newContent = content
             let obfuFileModel = ObfuFileModel(sourceModel: fileModel)
             obfuFileModel.obfuKeyValues = keyValues // 獨立的 key values 儲存
             obfuData.obfuFileModels.append(obfuFileModel)
