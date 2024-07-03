@@ -66,7 +66,7 @@ class ReportMaker: CustomStringConvertible {
         return text
     }
     fileprivate static func defaultFileName() -> String {
-        let format = "yyyy MM dd"
+        let format = "yyyy MM dd HH mm ss"
         let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         let dateStr = dateFormatter.string(from: Date())
